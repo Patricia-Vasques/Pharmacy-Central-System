@@ -17,6 +17,10 @@ export function Login () {
                     <input type="password" className="input-password" name="senha" id="senha" placeholder="Digite sua senha" required/>
                 </div>
             </div>
+
+            
+                <button className="button-entrar" type="submit">Entrar</button>
+            
         </form>
     )
 }
