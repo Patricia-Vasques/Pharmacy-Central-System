@@ -1,26 +1,42 @@
 import React from "react"
+import { useState } from "react";
+import "./login.css"
 
-export function Login () {
+function Login ({fazerLogin}) {
+    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('');
+
+    function handleEntrar( event) {
+       
+        
+        if (usuario && senha !== ''){
+            fazerLogin({ usuario, senha });
+            setUsuario([]);
+            setSenha([]);
+        }
+    }
+
     return (
         <form className="form-container">
 
             <div className="form-group">
-                <label className="label-name" htmlFor="name">Usuário</label>
-                <div className="input-name">
-                    <input type="text" className="" name="usuario" id="usuario" placeholder="Digite seu usuário" required/>
+                <label className="label-usuario" htmlFor="usuario"><b>Usuário</b></label>
+                <div className="form-usuario">
+                    <input type="text" className="input-usuario" name="usuario" id="usuario" placeholder="Digite seu usuário" onChange={(e) => setUsuario(e.target.value)} required/>
                 </div>
             </div>
 
             <div className="form-group">
-                <label className="label-password" htmlFor="name">Senha</label>
-                <div className="">
-                    <input type="password" className="input-password" name="senha" id="senha" placeholder="Digite sua senha" required/>
+                <label className="label-password" htmlFor="name"><b>Senha</b></label>
+                <div className="form-password">
+                    <input type="password" className="input-password" name="senha" id="senha" placeholder="Digite sua senha" onChange={(e) => setSenha(e.target.value)} required/>
                 </div>
             </div>
 
-            
-                <button className="button-entrar" type="submit">Entrar</button>
-            
+                <button className="button-entrar" type="submit" onClick={handleEntrar} > <b>Entrar</b></button>
+
         </form>
     )
 }
+
+export default Login;

@@ -1,4 +1,4 @@
-import { Login } from './components/Login'
+import Login from './components/Login'
 import './App.css'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      <div ClassName="App-login">
+      <div className="App-login">
         <Login />
       </div>
     </div>
