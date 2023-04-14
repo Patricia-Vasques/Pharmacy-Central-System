@@ -1,19 +1,21 @@
-import React from "react"
+import React from "react";
 import { useState } from "react";
 import { Header } from "./Header";
-import "./login.css"
+import { Link } from "react-router-dom";
+import "./login.css";
 
-function Login ({fazerLogin}) {
+export function Login ({fazerLogin}) {
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
 
     function handleEntrar( event) {
-       
+    event.preventDefault();
         
         if (usuario && senha !== ''){
             fazerLogin({ usuario, senha });
             setUsuario([]);
             setSenha([]);
+
         }
     }
 
@@ -37,11 +39,11 @@ function Login ({fazerLogin}) {
             </div>
 
                 <button className="button-entrar" type="submit" onClick={handleEntrar} > <b>Entrar</b></button>
-
+                <br />
+            <Link to="/NovoUsuario">Cadastrar Usuário</Link>
+        
         </form>
         </div>
         
     )
-}
-
-export default Login;
+    }
