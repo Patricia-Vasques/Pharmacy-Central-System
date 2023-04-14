@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "./Header";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./novoUsuario.css"
 
 export function NovoUsuario ({cadastrarUsuario}) {
@@ -8,8 +9,7 @@ export function NovoUsuario ({cadastrarUsuario}) {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-
-    function handleCadastrarUsuario( event) {
+    function handleCadastrarUsuario() {
        
         
         if (nome && email && senha !== ''){
@@ -48,8 +48,8 @@ export function NovoUsuario ({cadastrarUsuario}) {
         </div>
         </div>
 
-        <button className="Button-cadastro-novoUsuario" type="submit" onClick={handleCadastrarUsuario}><b>Castrar Usuário</b></button>
-    
+        <button className="Button-cadastro-novoUsuario" type="submit" onClick={handleCadastrarUsuario}> <Link to="./Login"><b>Castrar Usuário</b></Link></button>
+        
 
         </form>
 
