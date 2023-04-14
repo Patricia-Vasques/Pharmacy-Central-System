@@ -1,5 +1,6 @@
 import React from "react"
 import { useState } from "react";
+import { Header } from "./Header";
 import "./login.css"
 
 function Login ({fazerLogin}) {
@@ -17,8 +18,10 @@ function Login ({fazerLogin}) {
     }
 
     return (
-        <form className="form-container">
+        <div>
+            <Header />
 
+        <form className="form-container">
             <div className="form-group">
                 <label className="label-usuario" htmlFor="usuario"><b>Usuário</b></label>
                 <div className="form-usuario">
@@ -36,6 +39,8 @@ function Login ({fazerLogin}) {
                 <button className="button-entrar" type="submit" onClick={handleEntrar} > <b>Entrar</b></button>
 
         </form>
+        </div>
+        
     )
 }
 

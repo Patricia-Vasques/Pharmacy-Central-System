@@ -45,3 +45,15 @@
  border-radius: 5px
  ;
 }
+
+.header-links{
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(193, 226, 108);
+}
