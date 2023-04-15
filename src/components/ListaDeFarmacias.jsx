@@ -1,4 +1,5 @@
 import { Header } from "./Header";
+import { Link } from "react-router-dom";
 
 export function ListaDeFarmacias(){
     return (
@@ -9,7 +10,7 @@ export function ListaDeFarmacias(){
             <div className="text-listaFarmacias">
                 <h1>Farmácias cadastradas</h1>
             </div>
-        <div>
+        
         <table className="table-listaFarmacias">
             <thead>
                 <tr>
@@ -17,7 +18,8 @@ export function ListaDeFarmacias(){
                 </tr>
         </thead>
         </table>
-        </div>
+    
+        <Link to="/CadastrarFarmacia"><a className="link-cadastro-farmacia">Cadastrar Nova Farmácia</a></Link>
 
         </div>
     )
