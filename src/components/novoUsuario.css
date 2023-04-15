@@ -5,12 +5,23 @@
     border-radius: 3px;
     border-color: black;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 50px;
     margin-left: 30%;
     margin-right: 30%;
     padding-top: 15px;
     padding-bottom: 15px;
     
+}
+
+.text-novo-usuario{
+     display: block;
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .label-novoUsuario-name{
@@ -35,6 +46,19 @@
 }
 
 .input-novoUsuario-email{
+    background: white;
+    color: black;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.label-novoUsuario-usuario{
+    display: block;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.input-novoUsuario-usuario{
     background: white;
     color: black;
     font-size: 15px;
