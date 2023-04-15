@@ -39,7 +39,7 @@ export function Login ({fazerLogin}) {
             <div className="form-group">
                 <label className="label-usuario" htmlFor="email"><b>E-mail</b></label>
                 <div className="form-usuario">
-                    <input type="email" className="input-usuario" name="email" id="email" placeholder="Digite seu e-mail" onChange={(e) => setUsuario(e.target.value)} required />
+                    <input type="email" className="input-usuario" name="email" id="email" placeholder="Digite seu e-mail" onChange={(e) => setUsuario(e.target.value)} required="Falta o e-mail" />
                 </div>
             </div>
 
