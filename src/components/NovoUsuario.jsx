@@ -8,14 +8,13 @@ import "./novoUsuario.css"
 export function NovoUsuario ({cadastrarUsuario}) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-    const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
     
  
 
     function handleCadastrarUsuario() {{
 
-        if (nome !== '' && usuario !== '' && senha !== '' & senha >= 8 && senha /[0-9] [A-Za-z] !== ""){
+        if (nome !== ''  && senha !== '' & senha >= 8 && senha /[0-9] [A-Za-z] !== ""){
             console.log("nome:", nome);
             console.log("email:", email);
             console.log("usuario:", usuario);
@@ -26,7 +25,6 @@ export function NovoUsuario ({cadastrarUsuario}) {
             cadastrarUsuario({ nome, email, senha });
             setNome([]);
             setEmail([]);
-            setUsuario([]);
             setSenha([]);
         }
 
@@ -37,11 +35,11 @@ export function NovoUsuario ({cadastrarUsuario}) {
         < div>
         <Header />
 
+        <form className="form-novoUsuario" >
+
         <div className="text-novo-usuario">
             <h1>Cadastro Novo Usuário</h1>
         </div>
-
-        <form className="form-novoUsuario" >
 
         <div className="form-group">
         <label className="label-novoUsuario-name" htmlFor="name"><b>Nome Completo:</b></label>
@@ -57,12 +55,6 @@ export function NovoUsuario ({cadastrarUsuario}) {
         </div>
         </div>
 
-        <div className="form-group">
-        <label className="label-novoUsuario-usuario" htmlFor="usuarioi"><b>Usuário:</b></label>
-        <div className="form-novoUsuario-usuario">
-            <input type="text" className="input-novoUsuario-usuario" name="novoUsuario" id="novoUsuario" placeholder="Digite um usuário" onChange={(e) => setEmail(e.target.value)} required/>
-        </div>
-        </div>
 
         <div className="form-group">
         <label className="label-novoUsuario-senha" htmlFor="senha"><b>Senha:</b></label>
