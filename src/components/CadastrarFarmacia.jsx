@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Header } from "./Header";
+import "./cadastrarFarmacia.css";
 
 
 
@@ -20,6 +21,25 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
 
+    const handleCep = (event) => {
+        setCepFarmacia(event.target.value)};
+
+    const buscarCep = (cep) => {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((response) => response.json())
+        .then((dados) => {
+            setEnderecoFarmacia(dados.enderecoFarmacia);
+            setBairroFarmacia(dados.bairroFarmacia);
+            setCidadeFarmacia(dados.cidadeFarmacia);
+            setEstadoFarmacia(dados.estadoFarmacia)
+    })};
+    
+     const handleBuscarBlur = () =>{
+        if(cep.length === 8) {
+            buscarCep(cepFarmacia);
+        }
+     };
+    
     function cadastrarFarmacias(e){
         e.preventDefault();
         console.log("Farmácia cadastrada com sucesso!")
@@ -75,8 +95,8 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         <div>
             <Header />
 
-           <form onSubmit={cadastrarFarmacias}>
-            <div> 
+           <form className="form-cadastroFarmacia" onSubmit={cadastrarFarmacias}>
+            <div className="text-cadastroNovaFarmacia"> 
                 <h1>Cadastro de Nova Farmácia</h1>
             </div>
 
@@ -101,23 +121,24 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
             </div>
 
             <div className="form-group">
-                <label className="label-telefoneFarmcia" htmlFor="telefoneFarmcia"><b>Telefone:</b></label>
-                <input type="tel"  className="input-telefoneFarmcia" name="telefoneFarmcia" id="telefoneFarmcia" placeholder="Digite o telefone" onChange={(e) => setTelefoneFarmacia(e.target.value)} required/>
+                <label className="label-telefoneFarmacia" htmlFor="telefoneFarmacia"><b>Telefone:</b></label>
+                <input type="tel"  className="input-telefoneFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={(e) => setTelefoneFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-celularFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
-                <input type="tel" className="input-celularFarmcia" name="celularFarmcia" id="celularFarmcia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
+                <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
             </div>
 
+            <hr />
             {/*Parte do endereço no formulário*/}
 
-                <div>
+                <div className="text-enderecoCompleto">
                     <h1>Endereço Completo</h1>
                 </div>
             
             <div className="form-group">
-                <label className="label-cep" htmlFor="cep"><b>CEP:</b></label>
+                <label className="label-cep" htmlFor="cep" onChange={handleCep} onBlur={handleBuscarBlur}><b>CEP:</b></label>
                 <input type="text" className="input-cep" name="cep" id="cep" placeholder="Digite o cep" onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
             </div>
 
@@ -151,9 +172,9 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
             </div>
 
-            <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}> Cadastrar Farmácia</button>
-           </form>
-          
+            <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
+            </form>
+
         </div>
     )
 }
