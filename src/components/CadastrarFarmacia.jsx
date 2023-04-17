@@ -4,10 +4,8 @@ import { Header } from "./Header";
 import "./cadastrarFarmacia.css";
 
 
-
 export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
-
-    const [razaoSocial, setrazaoSocial] = useState('');
+    const [razaoSocial, setRazaoSocial] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
     const [emailFarmacia, setEmailFarmacia] = useState('');
@@ -21,30 +19,27 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
 
-    const handleCep = (event) => {
-        setCepFarmacia(event.target.value)};
-
-    const buscarCep = (cep) => {
+    const buscarCep = (e) => {
+        const cep = e.target.value.replace(/\D/g, '');
+        console.log (cep);
+        setCepFarmacia(cep);
+        if(cep.length ===8){
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
+
         .then((response) => response.json())
         .then((dados) => {
-            setEnderecoFarmacia(dados.enderecoFarmacia);
-            setBairroFarmacia(dados.bairroFarmacia);
-            setCidadeFarmacia(dados.cidadeFarmacia);
-            setEstadoFarmacia(dados.estadoFarmacia)
-    })};
-    
-     const handleBuscarBlur = () =>{
-        if(cep.length === 8) {
-            buscarCep(cepFarmacia);
-        }
-     };
-    
+            console.log(dados);
+            if(!dados.erro){}
+                setEnderecoFarmacia(dados.enderecoFarmacia);
+                setBairroFarmacia(dados.bairroFarmacia);
+                setCidadeFarmacia(dados.cidadeFarmacia);
+                setEstadoFarmacia(dados.estadoFarmacia);
+    })}};
+
     function cadastrarFarmacias(e){
         e.preventDefault();
         console.log("Farmácia cadastrada com sucesso!")
     }
-    
     
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
@@ -53,16 +48,30 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
 
-        CadastrarFarmacia (cadastrarNovaFarmacia) ({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
+        cadastrarNovaFarmacia({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
                 enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
-           
+
+                localStorange.setItem("razaoSocial", razaoSocial),     
+                localStorange.setItem("cnpj", cnpj),
+                localStorange.setItem("nomeFantasia", nomeFantasia),
+                localStorange.setItem("emailFarmacia", emailFarmacia),
+                localStorange.setItem("telefoneFarmacia", telefoneFarmacia),
+                localStorange.setItem("celularFarmacia", celularFarmacia),
+                localStorange.setItem("cepFarmacia",cepFarmacia),
+                localStorange.setItem("enderecoFarmacia", enderecoFarmacia),
+                localStorange.setItem("numeroFarmacia", numeroFarmacia),
+                localStorange.setItem("bairroFarmacia", bairroFarmacia),
+                localStorange.setItem("cidadeFarmacia", cidadeFarmacia),
+                localStorange.setItem("estadoFarmacia", estadoFarmacia),
+                localStorange.setItem("complemento", complemento),
+
             console.log("razao social:", razaoSocial);
             console.log("cnpj:", cnpj);
             console.log("nome fantasia:", nomeFantasia);
             console.log("email farmacia", emailFarmacia);
             console.log("telefone farmacia:", telefoneFarmacia);
             console.log("celular farmacia:", celularFarmacia);
-            console.log(" cep farmacia:", cepFarmacia);
+            console.log("cep farmacia:", cepFarmacia);
             console.log("endereco farmacia", enderecoFarmacia);
             console.log("numero farmacia:", numeroFarmacia);
             console.log("bairro farmacia:", bairroFarmacia);
@@ -70,10 +79,11 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
             console.log("estado farmacia", estadoFarmacia);
             console.log("complemento", complemento);
 
-        } else{
+
+        }else{
             alert("Preencha todos os campos!")
-      
-                setrazaoSocial([]);
+
+                setRazaoSocial([]);
                 setCnpj([]);
                 setNomeFantasia([]);
                 setEmailFarmacia([]);
@@ -86,16 +96,13 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 setCidadeFarmacia([]);
                 setEstadoFarmacia([]);
                 setComplemento([]);
-                
-                localStorange.setItem(("razaoSocial", razaoSocial), ("cnpj", cnpj), ("nomeFantasia", nomeFantasia), ("emailFarmacia", emailFarmacia), ("telefoneFarmacia", telefoneFarmacia), ("celularFarmacia", celularFarmacia), ("cepFarmacia",cepFarmacia),
-                ("enderecoFarmacia", enderecoFarmacia), ("numeroFarmacia", numeroFarmacia), ("bairroFarmacia", bairroFarmacia), ("cidadeFarmacia", cidadeFarmacia), ("estadoFarmacia", estadoFarmacia), ("complemento", complemento))
             }}
 
     return(
         <div>
             <Header />
 
-           <form className="form-cadastroFarmacia" onSubmit={cadastrarFarmacias}>
+        <form className="form-cadastroFarmacia" onSubmit={cadastrarFarmacias}>
             <div className="text-cadastroNovaFarmacia"> 
                 <h1>Cadastro de Nova Farmácia</h1>
             </div>
@@ -138,13 +145,13 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 </div>
             
             <div className="form-group">
-                <label className="label-cep" htmlFor="cep" onChange={handleCep} onBlur={handleBuscarBlur}><b>CEP:</b></label>
-                <input type="text" className="input-cep" name="cep" id="cep" placeholder="Digite o cep" onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
+                <label className="label-cep" htmlFor="cep" ><b>CEP:</b></label>
+                <input type="text" value={cepFarmacia} className="input-cep" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep"onBlur={buscarCep} onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-endereçoFarmacia" htmlFor="endereçoFarmacia"><b>Endereço:</b></label>
-                <input type="text"  className="input-endereçoFarmacia" name="endereçoFarmacia" id="endereçoFarmacia" placeholder="Digite o endereço" onChange={(e) => setEnderecoFarmacia(e.target.value)} required/>
+                <input type="text" value={enderecoFarmacia } className="input-endereçoFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={(e) => setEnderecoFarmacia(e.target.value )} required/>
             </div>
 
             <div className="form-group">
@@ -154,17 +161,17 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
 
             <div className="form-group">
                 <label className="label-bairroFarmacia" htmlFor="bairroFarmacia"><b>Bairro:</b></label>
-                <input type="text"  className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={(e) => setBairroFarmacia(e.target.value)} required/>
+                <input type="text" value={bairroFarmacia } className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={(e) => setBairroFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-cidadeFarmacia" htmlFor="cidadeFarmacia"><b>Cidade:</b></label>
-                <input type="text"  className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={(e) => setCidadeFarmacia(e.target.value)} required/>
+                <input type="text" value={cidadeFarmacia } className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={(e) => setCidadeFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-estadoFarmacia" htmlFor="estadoFarmacia"><b>Estado:</b></label>
-                <input type="text"  className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={(e) => setEstadoFarmacia(e.target.value)} required/>
+                <input type="text" value={estadoFarmacia } className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={(e) => setEstadoFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">

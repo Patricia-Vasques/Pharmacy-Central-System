@@ -17,12 +17,12 @@ export function NovoUsuario ({cadastrarUsuario}) {
         if (nome !== ''  && senha !== '' & senha >= 8 && senha /[0-9] [A-Za-z] !== ""){
             console.log("nome:", nome);
             console.log("email:", email);
-            console.log("usuario:", usuario);
             console.log("senha.:", senha);
+            cadastrarUsuario({ nome, email, senha });
+
         } else{
             alert("Preencha todos os campos!")
         }
-            cadastrarUsuario({ nome, email, senha });
             setNome([]);
             setEmail([]);
             setSenha([]);
