@@ -20,6 +20,7 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     const [complemento, setComplemento] = useState('');
 
     const buscarCep = (e) => {
+        try{
         const cep = e.target.value.replace(/\D/g, '');
         console.log (cep);
         setCepFarmacia(cep);
@@ -29,12 +30,19 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         .then((response) => response.json())
         .then((dados) => {
             console.log(dados);
-            if(!dados.erro){}
-                setEnderecoFarmacia(dados.enderecoFarmacia);
-                setBairroFarmacia(dados.bairroFarmacia);
-                setCidadeFarmacia(dados.cidadeFarmacia);
-                setEstadoFarmacia(dados.estadoFarmacia);
-    })}};
+                setEnderecoFarmacia(dados.logradouro);
+                setBairroFarmacia(dados.bairro);
+                setCidadeFarmacia(dados.localidade);
+                setEstadoFarmacia(dados.uf);
+                setEndereco(dados.logradouro);
+                setBairro(dados.bairro);
+                setCidade(dados.localidade)
+                setEstado(dados.uf)
+          
+    });
+}} catch (error){
+    console.log("Ops! Ocorreu um erro!", error);
+}};
 
     function cadastrarFarmacias(e){
         e.preventDefault();
