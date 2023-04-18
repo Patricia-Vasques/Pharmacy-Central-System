@@ -13,10 +13,13 @@ export function Login ({fazerLogin}) {
         if (usuario !== '' && senha !== ''){
             console.log("usuario:", usuario);
             console.log("senha:", senha);
+
+            fazerLogin({ usuario, senha });
+
         } else{
             alert("Preencha os campos de usuário e senha!")
         }
-            fazerLogin({ usuario, senha });
+            
             setUsuario([]);
             setSenha([]);
     
