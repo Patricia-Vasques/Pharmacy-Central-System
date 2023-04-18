@@ -19,6 +19,8 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
 
+    //Buscar o Cep pelo site dos correios e preencher automatico os campos//
+
     const buscarCep = (e) => {
         try{
         const cep = e.target.value.replace(/\D/g, '');
@@ -44,14 +46,17 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     console.log("Ops! Ocorreu um erro!", error);
 }};
 
-    function cadastrarFarmacias(e){
-        e.preventDefault();
+//mensagem quando enviar o formulário
+    function cadastrarFarmacias(event){
+        event.preventDefault();
         console.log("Farmácia cadastrada com sucesso!")
     }
     
+    //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
+    //
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
-
+        // campos que devem ser preenchidosobrigatoriamente
         if (razaoSocial !== ''  && cnpj !== '' && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
@@ -117,7 +122,7 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
 
             <div className="form-group">
                 <label className="label-razaoSocial" htmlFor="name"><b>Razão Social:</b></label>
-                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={(e) => setrazaoSocial(e.target.value)} required/>
+                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={(e) => setRazaoSocial(e.target.value)} required/>
             </div>
 
             <div className="form-group">
