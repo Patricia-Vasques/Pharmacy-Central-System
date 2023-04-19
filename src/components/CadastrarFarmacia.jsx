@@ -36,10 +36,6 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 setBairroFarmacia(dados.bairro);
                 setCidadeFarmacia(dados.localidade);
                 setEstadoFarmacia(dados.uf);
-                setEndereco(dados.logradouro);
-                setBairro(dados.bairro);
-                setCidade(dados.localidade)
-                setEstado(dados.uf)
 
     });
 }} catch (error){
@@ -51,9 +47,6 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         event.preventDefault();
         console.log("Farmácia cadastrada com sucesso!")
     }
-    
-    //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
-    //
 
     
     const [item, setItem] = useState({
@@ -72,10 +65,15 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         complemento: '',
 })
 
+//atualiza o valor item
+const handleOnChange = (e) =>{
+    const {nome, value} = e.target;
+    setItem({...item, [nome]:value});
+}
+
+ //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
-
-      
     
         // campos que devem ser preenchidos obrigatoriamente
         if (razaoSocial !== ''  && cnpj !== '' && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
@@ -132,12 +130,6 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 setEstadoFarmacia([]);
                 setComplemento([]);
             }}
-
-            const handleOnChange = (e) =>{
-                const {nome, value} = e.target;
-                setItem({...item, [nome]:value});
-            }
-
 
     return(
         <div>
