@@ -36,11 +36,7 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 setBairroFarmacia(dados.bairro);
                 setCidadeFarmacia(dados.localidade);
                 setEstadoFarmacia(dados.uf);
-                setEndereco(dados.logradouro);
-                setBairro(dados.bairro);
-                setCidade(dados.localidade)
-                setEstado(dados.uf)
-          
+
     });
 }} catch (error){
     console.log("Ops! Ocorreu um erro!", error);
@@ -51,12 +47,35 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         event.preventDefault();
         console.log("Farmácia cadastrada com sucesso!")
     }
+
     
-    //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
-    //
+    const [item, setItem] = useState({
+        razaoSocail: '',
+        cnpj: '',
+        nomeFantasia: '',
+        emailFarmacia: '',
+        telefoneFarmacia: '',
+        celularFarmacia: '',
+        cepFarmacia: '',
+        endereceFarmacia: '',
+        numeroFarmacia: '',
+        bairoFarmacia: '',
+        cidadeFarmacia: '',
+        estadoFarmacia: '',
+        complemento: '',
+})
+
+//atualiza o valor item
+const handleOnChange = (e) =>{
+    const {nome, value} = e.target;
+    setItem({...item, [nome]:value});
+}
+
+ //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
-        // campos que devem ser preenchidosobrigatoriamente
+    
+        // campos que devem ser preenchidos obrigatoriamente
         if (razaoSocial !== ''  && cnpj !== '' && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
@@ -64,6 +83,7 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
         cadastrarNovaFarmacia({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
                 enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
 
+                
                 localStorange.setItem("razaoSocial", razaoSocial),     
                 localStorange.setItem("cnpj", cnpj),
                 localStorange.setItem("nomeFantasia", nomeFantasia),
@@ -122,32 +142,32 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
 
             <div className="form-group">
                 <label className="label-razaoSocial" htmlFor="name"><b>Razão Social:</b></label>
-                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={(e) => setRazaoSocial(e.target.value)} required/>
+                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-cnpj" htmlFor="cnpj"><b>CNPJ:</b></label>
-                <input type="text"  className="input-cnpj" name="cnpj" id="cnpj" placeholder="Digite o CNPJ" onChange={(e) => setCnpj(e.target.value)} required/>
+                <input type="text"  className="input-cnpj" name="cnpj" id="cnpj" placeholder="Digite o CNPJ" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-nomeFantasia" htmlFor="nomeFantasia"><b>Nome fantasia:</b></label>
-                <input type="text"  className="input-nomeFantasia" name="nomeFantasia" id="nomeFantasia" placeholder="Digite o Nome Fantasia" onChange={(e) => setNomeFantasia(e.target.value)} required/>
+                <input type="text"  className="input-nomeFantasia" name="nomeFantasia" id="nomeFantasia" placeholder="Digite o Nome Fantasia" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-emailFarmacia" htmlFor="emailFarmacia"><b>E-mail:</b></label>
-                <input type="email" className="input-emailFarmacia" name="emailFarmacia" id="emailFarmacia" placeholder="Digite o e-mail" onChange={(e) => setEmailFarmacia(e.target.value)} required/>
+                <input type="email" className="input-emailFarmacia" name="emailFarmacia" id="emailFarmacia" placeholder="Digite o e-mail" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-telefoneFarmacia" htmlFor="telefoneFarmacia"><b>Telefone:</b></label>
-                <input type="tel"  className="input-telefoneFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={(e) => setTelefoneFarmacia(e.target.value)} required/>
+                <input type="tel"  className="input-telefoneFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-celularFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
-                <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
+                <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={handleOnChange} required/>
             </div>
 
             <hr />
@@ -159,37 +179,37 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
             
             <div className="form-group">
                 <label className="label-cep" htmlFor="cep" ><b>CEP:</b></label>
-                <input type="text" value={cepFarmacia} className="input-cep" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep"onBlur={buscarCep} onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
+                <input type="text" value={cepFarmacia} className="input-cep" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep" onBlur={buscarCep} onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-endereçoFarmacia" htmlFor="endereçoFarmacia"><b>Endereço:</b></label>
-                <input type="text" value={enderecoFarmacia } className="input-endereçoFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={(e) => setEnderecoFarmacia(e.target.value )} required/>
+                <input type="text" value={enderecoFarmacia } className="input-endereçoFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-numeroEndereco" htmlFor="numeroEndereco"><b>Número:</b></label>
-                <input type="text"  className="input-numeroEndereco" name="numeroEndereco" id="numeroEndereco" placeholder="Digite o número" onChange={(e) => setNumeroFarmacia(e.target.value)} required/>
+                <input type="text"  className="input-numeroEndereco" name="numeroEndereco" id="numeroEndereco" placeholder="Digite o número" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-bairroFarmacia" htmlFor="bairroFarmacia"><b>Bairro:</b></label>
-                <input type="text" value={bairroFarmacia } className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={(e) => setBairroFarmacia(e.target.value)} required/>
+                <input type="text" value={bairroFarmacia } className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-cidadeFarmacia" htmlFor="cidadeFarmacia"><b>Cidade:</b></label>
-                <input type="text" value={cidadeFarmacia } className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={(e) => setCidadeFarmacia(e.target.value)} required/>
+                <input type="text" value={cidadeFarmacia } className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-estadoFarmacia" htmlFor="estadoFarmacia"><b>Estado:</b></label>
-                <input type="text" value={estadoFarmacia } className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={(e) => setEstadoFarmacia(e.target.value)} required/>
+                <input type="text" value={estadoFarmacia } className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={handleOnChange} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-complementoFarmacia" htmlFor="complementoFarmacia"><b>Complemento:</b></label>
-                <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
+                <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={handleOnChange} />
             </div>
 
             <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
