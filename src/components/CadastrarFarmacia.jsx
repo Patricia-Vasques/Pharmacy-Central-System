@@ -22,7 +22,6 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     //Buscar o Cep pelo site dos correios e preencher automatico os campos//
 
     const buscarCep = (e) => {
-        try{
         const cep = e.target.value.replace(/\D/g, '');
         console.log (cep);
         setCepFarmacia(cep);
@@ -36,67 +35,57 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 setBairroFarmacia(dados.bairro);
                 setCidadeFarmacia(dados.localidade);
                 setEstadoFarmacia(dados.uf);
-
-    });
-}} catch (error){
+                setEndereco(dados.logradouro);
+                setBairro(dados.bairro);
+                setCidade(dados.localidade)
+                setEstado(dados.uf)
+          
+    })
+.catch ((error) => {
     console.log("Ops! Ocorreu um erro!", error);
-}};
+})}}
+
 
 //mensagem quando enviar o formulário
-    function cadastrarFarmacias(event){
-        event.preventDefault();
+    function cadastrarFarmacias(e){
+        e.preventDefault();
         console.log("Farmácia cadastrada com sucesso!")
+
+        var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
+
+        //adicionar um novo objeto com todos os dados da farmacia na lista farmacia
+        listaFarmacias.push({
+            razaoSocial,
+            cnpj,
+            nomeFantasia,
+            emailFarmacia,
+            telefoneFarmacia,
+            celularFarmacia,
+            cepFarmacia,
+            enderecoFarmacia,
+            numeroFarmacia,
+            bairroFarmacia,
+            cidadeFarmacia,
+            estadoFarmacia,
+            complemento,
+        })
+        //salvando no localStorage
+        localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
     }
-
     
-    const [item, setItem] = useState({
-        razaoSocail: '',
-        cnpj: '',
-        nomeFantasia: '',
-        emailFarmacia: '',
-        telefoneFarmacia: '',
-        celularFarmacia: '',
-        cepFarmacia: '',
-        endereceFarmacia: '',
-        numeroFarmacia: '',
-        bairoFarmacia: '',
-        cidadeFarmacia: '',
-        estadoFarmacia: '',
-        complemento: '',
-})
+    //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
 
-//atualiza o valor item
-const handleOnChange = (e) =>{
-    const {nome, value} = e.target;
-    setItem({...item, [nome]:value});
-}
-
- //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
-    
-        // campos que devem ser preenchidos obrigatoriamente
-        if (razaoSocial !== ''  && cnpj !== '' && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
+
+        // campos que devem ser preenchidosobrigatoriamente
+        if (razaoSocial !== ""  && cnpj !== "" && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
-
+            
+            // passar os valores 
         cadastrarNovaFarmacia({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
                 enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
-
-                
-                localStorange.setItem("razaoSocial", razaoSocial),     
-                localStorange.setItem("cnpj", cnpj),
-                localStorange.setItem("nomeFantasia", nomeFantasia),
-                localStorange.setItem("emailFarmacia", emailFarmacia),
-                localStorange.setItem("telefoneFarmacia", telefoneFarmacia),
-                localStorange.setItem("celularFarmacia", celularFarmacia),
-                localStorange.setItem("cepFarmacia",cepFarmacia),
-                localStorange.setItem("enderecoFarmacia", enderecoFarmacia),
-                localStorange.setItem("numeroFarmacia", numeroFarmacia),
-                localStorange.setItem("bairroFarmacia", bairroFarmacia),
-                localStorange.setItem("cidadeFarmacia", cidadeFarmacia),
-                localStorange.setItem("estadoFarmacia", estadoFarmacia),
-                localStorange.setItem("complemento", complemento),
 
             console.log("razao social:", razaoSocial);
             console.log("cnpj:", cnpj);
@@ -142,32 +131,32 @@ const handleOnChange = (e) =>{
 
             <div className="form-group">
                 <label className="label-razaoSocial" htmlFor="name"><b>Razão Social:</b></label>
-                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={handleOnChange} required/>
+                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={(e) => setRazaoSocial(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-cnpj" htmlFor="cnpj"><b>CNPJ:</b></label>
-                <input type="text"  className="input-cnpj" name="cnpj" id="cnpj" placeholder="Digite o CNPJ" onChange={handleOnChange} required/>
+                <input type="text"  className="input-cnpj" name="cnpj" id="cnpj" placeholder="Digite o CNPJ" onChange={(e) => setCnpj(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-nomeFantasia" htmlFor="nomeFantasia"><b>Nome fantasia:</b></label>
-                <input type="text"  className="input-nomeFantasia" name="nomeFantasia" id="nomeFantasia" placeholder="Digite o Nome Fantasia" onChange={handleOnChange} required/>
+                <input type="text"  className="input-nomeFantasia" name="nomeFantasia" id="nomeFantasia" placeholder="Digite o Nome Fantasia" onChange={(e) => setNomeFantasia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-emailFarmacia" htmlFor="emailFarmacia"><b>E-mail:</b></label>
-                <input type="email" className="input-emailFarmacia" name="emailFarmacia" id="emailFarmacia" placeholder="Digite o e-mail" onChange={handleOnChange} required/>
+                <input type="email" className="input-emailFarmacia" name="emailFarmacia" id="emailFarmacia" placeholder="Digite o e-mail" onChange={(e) => setEmailFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-telefoneFarmacia" htmlFor="telefoneFarmacia"><b>Telefone:</b></label>
-                <input type="tel"  className="input-telefoneFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={handleOnChange} required/>
+                <input type="tel"  className="input-telefoneFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={(e) => setTelefoneFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-celularFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
-                <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={handleOnChange} required/>
+                <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
             </div>
 
             <hr />
@@ -179,37 +168,37 @@ const handleOnChange = (e) =>{
             
             <div className="form-group">
                 <label className="label-cep" htmlFor="cep" ><b>CEP:</b></label>
-                <input type="text" value={cepFarmacia} className="input-cep" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep" onBlur={buscarCep} onChange={handleOnChange} required/>
+                <input type="text" value={cepFarmacia} className="input-cep" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep"onBlur={buscarCep} onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-endereçoFarmacia" htmlFor="endereçoFarmacia"><b>Endereço:</b></label>
-                <input type="text" value={enderecoFarmacia } className="input-endereçoFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={handleOnChange} required/>
+                <input type="text" value={enderecoFarmacia } className="input-endereçoFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={(e) => setEnderecoFarmacia(e.target.value )} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-numeroEndereco" htmlFor="numeroEndereco"><b>Número:</b></label>
-                <input type="text"  className="input-numeroEndereco" name="numeroEndereco" id="numeroEndereco" placeholder="Digite o número" onChange={handleOnChange} required/>
+                <input type="text"  className="input-numeroEndereco" name="numeroEndereco" id="numeroEndereco" placeholder="Digite o número" onChange={(e) => setNumeroFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-bairroFarmacia" htmlFor="bairroFarmacia"><b>Bairro:</b></label>
-                <input type="text" value={bairroFarmacia } className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={handleOnChange} required/>
+                <input type="text" value={bairroFarmacia } className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={(e) => setBairroFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-cidadeFarmacia" htmlFor="cidadeFarmacia"><b>Cidade:</b></label>
-                <input type="text" value={cidadeFarmacia } className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={handleOnChange} required/>
+                <input type="text" value={cidadeFarmacia } className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={(e) => setCidadeFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-estadoFarmacia" htmlFor="estadoFarmacia"><b>Estado:</b></label>
-                <input type="text" value={estadoFarmacia } className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={handleOnChange} required/>
+                <input type="text" value={estadoFarmacia } className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={(e) => setEstadoFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label className="label-complementoFarmacia" htmlFor="complementoFarmacia"><b>Complemento:</b></label>
-                <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={handleOnChange} />
+                <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
             </div>
 
             <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
