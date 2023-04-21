@@ -74,7 +74,14 @@ font-size: 15px;
     padding-bottom: 15px;
     
 }
-a{
-    text-decoration: none;
+
+.link-cadastro{
+    display: block;
     color: black;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
 }
