@@ -4,9 +4,9 @@ import { Header } from "./Header";
 import { Link } from "react-router-dom";
 import "./listaDeFarmacias.css";
 
- 
     export function ListaDeFarmacias(){
 
+        //Criar uma lista das farmácias 
         const farmaciasCadastradas = [
             {id:1,
                 razaoSocial: "",
@@ -24,6 +24,15 @@ import "./listaDeFarmacias.css";
                 complemento: "",}
         ]
 
+        const ListaNova = farmaciasCadastradas.map((farmacia)=>{
+            return farmacia.razaoSocial +" "+ farmacia.cnpj +" "+  farmacia.nomeFantasia +" "+farmacia.emailFarmacia +" "+ farmacia.telefoneFarmacia +" "+ farmacia.celularFarmacia
+            +" "+ farmacia.cepFarmacia +" "+ farmacia.enderecoFarmacia +" "+ farmacia.numeroFarmacia  +" "+ farmacia.bairroFarmacia +" "+farmacia.cidadeFarmaciav
+            +" "+ farmacia.estadoFarmacia +" "+ farmacia.complemento
+        });
+        
+        console.log(ListaNova);
+        
+        //criando o modal
         Modal.setAppElement('#root');
 
         const[modalFarmacias, setFarmacias] = React.useState(false);
@@ -52,10 +61,20 @@ import "./listaDeFarmacias.css";
             <thead>
                 <tr>
                     <th>Farmácia</th>
+                    <th>Telefone</th>
                 </tr>
         </thead>
+        
+
+        <tbody>
+            {ListaDeFarmacias && ListaDeFarmacias.map((farmacia) => 
+            <tr key={farmacia.id}>
+                <td>{farmacia.farmacia}</td>
+                <td>{farmacia.telefone}</td>
+            </tr>)}
+        </tbody>
         </table>
-    
+
         <Link to="/CadastrarFarmacia">Cadastrar Nova Farmácia</Link>
 
         <div>
