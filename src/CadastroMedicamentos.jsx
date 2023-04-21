@@ -1,13 +1,16 @@
 import React from "react";
 import { Header } from "./components/Header"
 import { useForm } from "react-hook-form"
+import "./cadastroMedicamentos.css"
 
 export function CadastroMedicamentos (){
 
     return(
         <div>
             < Header/>
-            <form ClassName="Form-cadastroMedicamentos">
+            <form ClassName="form-cadastro-medicamentos">
+
+                <h2 className="text-cadastro-medicamentos">Cadastro de Medicamentos</h2>
                 
                 <div className="form-group">
                     <label className="label-cadastroMedicamento" htmlFor="nome-medicamento">Nome do Medicamento:</label>
