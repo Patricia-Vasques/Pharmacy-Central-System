@@ -1,35 +1,30 @@
 import React from "react";
-import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Header } from "./Header";
 import { Link } from "react-router-dom";
-
 import "./novoUsuario.css"
 
-export function NovoUsuario ({cadastrarUsuario}) {
-    const [nome, setNome] = useState('');
+export function NovoUsuario () {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    
+    const navigate = useNavigate();
  
 
     function handleCadastrarUsuario() {{
 
-        if (nome !== ''  && senha !== '' & senha >= 8 && senha /[0-9] [A-Za-z] !== ""){
-            console.log("nome:", nome);
+        if (email.length >= 8 && senha.length >= 8) {
             console.log("email:", email);
-            console.log("senha.:", senha);
-            cadastrarUsuario({ nome, email, senha });
+            console.log("senha:", senha);
+            alert("Cadastro feito com sucesso!");
 
+            navigate("/");
         } else{
-            alert("Preencha todos os campos!")
+            alert("Preencha todos os campos corretamente!")
         }
-            setNome([]);
-            setEmail([]);
-            setSenha([]);
         }
 
     }
-
 
     return(
         < div>
@@ -39,13 +34,6 @@ export function NovoUsuario ({cadastrarUsuario}) {
 
         <div className="text-novo-usuario">
             <h1>Cadastro Novo Usuário</h1>
-        </div>
-
-        <div className="form-group">
-        <label className="label-novoUsuario-name" htmlFor="name"><b>Nome Completo:</b></label>
-        <div className="form-novoUsuario-name">
-            <input type="text" className="input-novoUsuario-name" name="nome" id="nome" placeholder="Digite seu nome completo" onChange={(e) => setNomeCompleto(e.target.value)} required/>
-        </div>
         </div>
 
         <div className="form-group">
@@ -63,7 +51,9 @@ export function NovoUsuario ({cadastrarUsuario}) {
         </div>
         </div>
 
-        <button className="Button-cadastro-novoUsuario" type="submit" onClick={handleCadastrarUsuario}> <Link to="./Login"><b>Castrar Usuário</b></Link></button>
+        <h5 className="text-senhaUsuario"> *Senha deve conter 8 caracteres com letras e números </h5>
+        
+        <button className="Button-cadastro-novoUsuario" type="submit" onClick={handleCadastrarUsuario}>Cadastrar</button>
         
 
         </form>
@@ -71,5 +61,3 @@ export function NovoUsuario ({cadastrarUsuario}) {
         </div>
     )
 }
-
-//ref='({minLength: 8, pattern:"/^[0-9] [A-Za-z]" }}'
