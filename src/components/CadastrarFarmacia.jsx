@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Header } from "./Header";
+import { ListaDeFarmacias } from "./ListaDeFarmacias";
 import "./cadastrarFarmacia.css";
+
 
 
 export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
@@ -45,7 +47,6 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     console.log("Ops! Ocorreu um erro!", error);
 })}}
 
-
 //mensagem quando enviar o formulário
     function cadastrarFarmacias(e){
         e.preventDefault();
@@ -78,7 +79,7 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
 
-        // campos que devem ser preenchidosobrigatoriamente
+        // campos que devem ser preenchidos obrigatoriamente
         if (razaoSocial !== ""  && cnpj !== "" && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
@@ -203,7 +204,6 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
 
             <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
             </form>
-
         </div>
     )
 }
