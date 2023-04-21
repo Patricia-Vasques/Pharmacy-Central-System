@@ -1,36 +1,32 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Header } from "./Header";
 import { Link } from "react-router-dom";
+import { Header } from "./Header";
 import "./login.css";
 
-export function Login ({fazerLogin}) {
+export function Login () {
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
-
-    function handleEntrar(){{
-        // tornando os campos de usuario e senha obrigatórios
-        if (usuario == "" || senha == ""){
-        console.log("Preencha todos os campos!")
-        return;
-    }
-    //regras para o usuario e senha e fazer o login
-        if (usuario.match (/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.[a-z]?$/i) && senha.match (!senha.length >=8 , /^[a-zA-Z\d]{8,}$/)){
+    const navigate = useNavigate();
+    
+    function handleEntrar() {
+        {
+          //regras para o usuario e senha e fazer o login
+          if (usuario.length >= 8 && senha.length >= 8) {
             console.log("usuario:", usuario);
             console.log("senha:", senha);
-
-            fazerLogin({ usuario, senha });
-
-            setUsuario([]);
-            setSenha([]);
-            console.log("Login feito com sucesso!")
-
-        } else{
-            console.log("Preencha os campos de usuário e senha corretamente!")
+            alert("Login feito com sucesso!");
+      
+            //redirecionar para a página de Lista de Farmácias
+            navigate("/ListaDeFarmacias");
+          } else {
+            alert("Preencha os campos de usuário e senha corretamente!");
+          }
         }
-            
-        }}
+      }
     return (
+  
         <div>
             <Header />
 
@@ -55,7 +51,7 @@ export function Login ({fazerLogin}) {
 
             <h5 className="text-senhaUsuario"> *Senha deve conter 8 caracteres com letras e números </h5>
 
-                <button className="button-entrar" type="submit" onClick={handleEntrar} > <Link to="./ListaDeFarmacias"> <b>Entrar</b></Link></button>
+                <button className="button-entrar" type="submit" onClick={handleEntrar} > <b>Entrar</b></button>
                 <br />
             <Link to="/NovoUsuario"  className="link-cadastro">Cadastrar Usuário</Link>
         
