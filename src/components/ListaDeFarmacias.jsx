@@ -4,27 +4,45 @@ import { Header } from "./Header";
 import { Link } from "react-router-dom";
 import "./listaDeFarmacias.css";
 
-    export function ListaDeFarmacias(props){
-        const dados = props.dados;
+    export function ListaDeFarmacias(props){{
+        const dados = props.dados()};
+        
+        const lista = [
+            {razaoSocial: "Farmácia do José",
+            cnpj:"30256842-0001/25",
+            nomeFatansia:"Farmácia do Zézinho",
+            emailFarmacia: "zezinho@email.com",
+            telefoneFarmacia: "(33)3333-3333",
+            celularFarmacia: "(99)99999-9999",
+            enderecoFarmacia: "Recanto Feliz",
+            numeroFarmacia: "111",
+            bairroFarmacia: "Feliz",
+            cidadeFarmacia: "São Paulo",
+            estadoFarmacia: "SP",
+            complemento: "sei la"
+            }]
 
             //fazer o lista.map
- 
-        const dadosListaFarmacia = lista.map((dados)=>{
-            <li key={dados.razaoSocial}></li>,
-            <li key={dados.cnpj}></li>,
-            <li key={dados.nomeFatansia}></li>,
-            <li key={dados.emailFarmacia}></li>,
-            <li key={dados.telefoneFarmacia}></li>,
-            <li key={dados.celularFarmacia}></li>,
-            <li key={dados.enderecoFarmacia}></li>,
-            <li key={dados.numeroFarmacia}></li>,
-            <li key={dados.bairroFarmacia}></li>,
-            <li key={dados.cidadeFarmacia}></li>,
-            <li key={dados.estadoFarmacia}></li>,
-            <li key={dados.complemento}></li>})
-        
+        const dadosListaFarmacia = lista.map((item)=>{
+            return(
+        <div>
+            <li key={item.razaoSocial}></li>,
+            <li key={item.cnpj}></li>,
+            <li key={item.nomeFatansia}></li>,
+            <li key={item.emailFarmacia}></li>,
+            <li key={item.telefoneFarmacia}></li>,
+            <li key={item.celularFarmacia}></li>,
+            <li key={item.enderecoFarmacia}></li>,
+            <li key={item.numeroFarmacia}></li>,
+            <li key={item.bairroFarmacia}></li>,
+            <li key={item.cidadeFarmacia}></li>,
+            <li key={item.estadoFarmacia}></li>,
+            <li key={item.complemento}></li>
+        </div>
+            )});
+            
         console.log(dadosListaFarmacia);
-    
+            
         //criando o modal
         Modal.setAppElement('#root');
 
@@ -45,22 +63,6 @@ import "./listaDeFarmacias.css";
         <div>
 
             <Header />
-
-            <div className="text-listaFarmacias">
-                <h1 className="text-farmaciasCadastradas"> Farmácias cadastradas</h1>
-                <ul>{dadosListaFarmacia}</ul>
-            </div>
-        
-        <table className="table-listaFarmacias">
-            <thead>
-                <tr className="tabela-lista-farmacias">
-                    <th>Farmácia</th>
-                    <th>Telefone</th>
-                </tr>
-            </thead>
-    
-        </table>
-        
         
         <Link to="/CadastrarFarmacia">Cadastrar Nova Farmácia</Link>
 
