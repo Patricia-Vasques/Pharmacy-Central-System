@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Header } from "./Header";
-import { ListaDeFarmacias } from "./ListaDeFarmacias"
 import "./cadastrarFarmacia.css";
 
-export function CadastrarFarmacia () {
+export function CadastrarFarmacia ({cadastrarFarmacia}){
     const [razaoSocial, setRazaoSocial] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
@@ -47,7 +46,7 @@ export function CadastrarFarmacia () {
 
         var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
-        listaFarmacias.push(farmacia)
+        cadastrarFarmacia(farmacia);
 
         localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))}
 
@@ -63,10 +62,7 @@ export function CadastrarFarmacia () {
         console.log("bairro farmacia:", bairroFarmacia);
         console.log("cidade farmacia:", cidadeFarmacia);
         console.log("estado farmacia", estadoFarmacia);
-        console.log("complemento", complemento);
 
-
-    
     //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
 
     function handleCadastrarFarmacia(event) {
@@ -77,6 +73,14 @@ export function CadastrarFarmacia () {
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
             
+            
+            // passar os valores 
+        cadastrarFarmacias({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
+                enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
+
+        }else{
+            alert("Preencha todos os campos!")
+
             setRazaoSocial('');
             setCnpj('');
             setNomeFantasia('');
@@ -89,16 +93,7 @@ export function CadastrarFarmacia () {
             setBairroFarmacia('');
             setCidadeFarmacia('');
             setEstadoFarmacia('');
-            setComplemento('');
-        
-            // passar os valores 
-        cadastrarFarmacias({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
-                enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
 
-        }else{
-            alert("Preencha todos os campos!")
-
-       
             }}
 
     return(
