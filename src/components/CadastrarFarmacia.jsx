@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { Header } from "./Header";
 import "./cadastrarFarmacia.css";
 
-export function CadastrarFarmacia ({cadastrarFarmacia}){
+export function CadastrarFarmacia ({props}){
     const [razaoSocial, setRazaoSocial] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
@@ -40,46 +41,41 @@ export function CadastrarFarmacia ({cadastrarFarmacia}){
     console.log("Ops! Ocorreu um erro!", error);
 })}}
 
-//mensagem quando enviar o formulário
-    function cadastrarFarmacias(farmacia){
-        alert("Farmácia cadastrada com sucesso!")
-
-        var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
-
-        cadastrarFarmacia(farmacia);
-
-        localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))}
-
-        console.log("razao social:", razaoSocial);
-        console.log("cnpj:", cnpj);
-        console.log("nome fantasia:", nomeFantasia);
-        console.log("email farmacia", emailFarmacia);
-        console.log("telefone farmacia:", telefoneFarmacia);
-        console.log("celular farmacia:", celularFarmacia);
-        console.log("cep farmacia:", cepFarmacia);
-        console.log("endereco farmacia", enderecoFarmacia);
-        console.log("numero farmacia:", numeroFarmacia);
-        console.log("bairro farmacia:", bairroFarmacia);
-        console.log("cidade farmacia:", cidadeFarmacia);
-        console.log("estado farmacia", estadoFarmacia);
-
+   
     //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
 
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
 
-        // campos que devem ser preenchidos obrigatoriamente
         if (razaoSocial !== ""  && cnpj !== "" && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
-            
-            
-            // passar os valores 
-        cadastrarFarmacias({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
-                enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
 
-        }else{
-            alert("Preencha todos os campos!")
+        const farmacia = {
+        razaoSocial: razaoSocial,
+        cnpj: cnpj,
+        nomeFantasia: nomeFantasia,
+        telefoneFarmacia: telefoneFarmacia,
+        celularFarmacia: celularFarmacia,
+        cepFarmacia: cepFarmacia,
+        enderecoFarmacia: enderecoFarmacia,
+        numeroFarmacia: numeroFarmacia,
+        bairroFarmacia: bairroFarmacia,
+        cidadeFarmacia: cidadeFarmacia,
+        estadoFarmacia: estadoFarmacia,
+        complemento: complemento,
+        }
+
+        alert("Farmácia cadastrada com sucesso!")
+
+        var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
+
+        localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
+
+        props.quandoCadastrarFarmacia(farmacia);
+
+        // campos que devem ser preenchidos obrigatoriamente
+        
 
             setRazaoSocial('');
             setCnpj('');
@@ -93,6 +89,11 @@ export function CadastrarFarmacia ({cadastrarFarmacia}){
             setBairroFarmacia('');
             setCidadeFarmacia('');
             setEstadoFarmacia('');
+            
+        
+
+        }else{
+            alert("Preencha todos os campos!")
 
             }}
 
@@ -181,4 +182,8 @@ export function CadastrarFarmacia ({cadastrarFarmacia}){
             </form>
         </div>
     )
+}
+
+CadastrarFarmacia.propsType = {
+    quandoCadastrarFarmacia: PropTypes.func.isRequired
 }
