@@ -40,7 +40,7 @@ export function ListaDeMedicamentos({medicamentos, laboratorio, tipo, dosagem, p
         <Modal 
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        style={{content:{color:black}, }}>
+        style={{content:{color: "black"}, }}>
         <h2>Detalhes do medicamento</h2>
         <p><strong>Medicamento:</strong>{medicamentos}</p>
         <p><strong>Laboratório:</strong>{laboratorio}</p>
