@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
 import "./cadastrarFarmacia.css";
 
 export function CadastrarFarmacia ({props}){
@@ -18,6 +19,7 @@ export function CadastrarFarmacia ({props}){
     const [cidadeFarmacia, setCidadeFarmacia] = useState('');
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
+    const navigate = useNavigate();
 
     //Buscar o Cep pelo site dos correios e preencher automatico os campos//
 
@@ -68,6 +70,8 @@ export function CadastrarFarmacia ({props}){
 
         alert("Farmácia cadastrada com sucesso!")
 
+        
+
         var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
         localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
@@ -100,11 +104,13 @@ export function CadastrarFarmacia ({props}){
     return(
         <div>
             <Header />
+            <div className="text-cadastroNovaFarmacia"> 
+
+            <h1>Cadastro de Nova Farmácia</h1>
+            </div>
 
         <form className="form-cadastroFarmacia" onSubmit={handleCadastrarFarmacia}>
-            <div className="text-cadastroNovaFarmacia"> 
-                <h1>Cadastro de Nova Farmácia</h1>
-            </div>
+        
 
             <div className="form-group">
                 <label className="label-razaoSocial" htmlFor="name"><b>Razão Social:</b></label>
@@ -135,13 +141,9 @@ export function CadastrarFarmacia ({props}){
                 <label className="label-celularFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
                 <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
             </div>
-
+           
             <hr />
             {/*Parte do endereço no formulário*/}
-
-                <div className="text-enderecoCompleto">
-                    <h1>Endereço Completo</h1>
-                </div>
             
             <div className="form-group">
                 <label className="label-cep" htmlFor="cep" ><b>CEP:</b></label>
@@ -177,8 +179,9 @@ export function CadastrarFarmacia ({props}){
                 <label className="label-complementoFarmacia" htmlFor="complementoFarmacia"><b>Complemento:</b></label>
                 <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
             </div>
-
+            <div >
             <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
+            </div>
             </form>
         </div>
     )
