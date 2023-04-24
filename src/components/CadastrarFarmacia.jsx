@@ -5,7 +5,7 @@ import { Header } from "./Header";
 import { useNavigate } from "react-router-dom";
 import "./cadastrarFarmacia.css";
 
-export function CadastrarFarmacia ({props}){
+export function CadastrarFarmacia (props){
     const [razaoSocial, setRazaoSocial] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
@@ -20,6 +20,23 @@ export function CadastrarFarmacia ({props}){
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
     const navigate = useNavigate();
+
+    
+    const farmacia= {
+        razaoSocial: razaoSocial,
+        cnpj: cnpj,
+        nomeFantasia: nomeFantasia,
+        emailFarmacia: emailFarmacia,
+        telefoneFarmacia: telefoneFarmacia,
+        celularFarmacia: celularFarmacia,
+        cepFarmacia: cepFarmacia,
+        enderecoFarmacia: enderecoFarmacia,
+        numeroFarmacia: numeroFarmacia,
+        bairroFarmacia: bairroFarmacia,
+        cidadeFarmacia: cidadeFarmacia,
+        estadoFarmacia: estadoFarmacia,
+        complemento: complemento,
+    }
 
     //Buscar o Cep pelo site dos correios e preencher automatico os campos//
 
@@ -53,30 +70,20 @@ export function CadastrarFarmacia ({props}){
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
 
-        const farmacia = {
-        razaoSocial: razaoSocial,
-        cnpj: cnpj,
-        nomeFantasia: nomeFantasia,
-        telefoneFarmacia: telefoneFarmacia,
-        celularFarmacia: celularFarmacia,
-        cepFarmacia: cepFarmacia,
-        enderecoFarmacia: enderecoFarmacia,
-        numeroFarmacia: numeroFarmacia,
-        bairroFarmacia: bairroFarmacia,
-        cidadeFarmacia: cidadeFarmacia,
-        estadoFarmacia: estadoFarmacia,
-        complemento: complemento,
-        }
+    
 
         alert("Farmácia cadastrada com sucesso!")
+        navigate("/ListaDeFarmacia");
 
         
 
         var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
+        listaFarmacias.push(farmacia)
+ 
         localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
 
-        props.quandoCadastrarFarmacia(farmacia);
+       
 
         // campos que devem ser preenchidos obrigatoriamente
         
