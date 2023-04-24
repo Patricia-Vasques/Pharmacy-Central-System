@@ -20,10 +20,9 @@ function App() {
   //useEffect com array vazio, pois só vai executar a primeira aplicação carregar
   //Busca as farmácias no localStorage e se esxistir da um setFarmacias para guardar as farmacias do storage no useState
   useEffect(() => {
-    const farmaciasDoStorage = localStorage.getItem('farmacias')
-    if(farmaciasDoStorage) {
-      setFarmacias(JSON.parse(farmaciasDoStorage))
-    }
+   const lista = JSON.parse(localStorage.getItem('listaFarmacias')) || []
+
+   setFarmacias(lista)
   }, []);
 
   const [medicamentos, setMedicamentos] =useState([]);
@@ -56,8 +55,7 @@ function App() {
           <Route path="/CadastrarFarmacia" element={<CadastrarFarmacia />} />
           <Route path="/CadastroMedicamentos" element={< CadastroMedicamentos quandoCadastrar={cadastrarMedicamento}/>} />
           <Route path="/ListaDeMedicamentos" element={< ListaDeMedicamentos />} />
-          <Route path="/ListaDeFarmacias" element={<ListaDeFarmacias lista={farmacias} />} />
-          <Route path="/CadastrarFarmacia" element={<CadastrarFarmacia quandoCadastrarFarmaci={cadastrarFarmacia} />} />
+          <Route path="/CadastrarFarmacia" element={<CadastrarFarmacia quandoAdicionar={cadastrarFarmacia} />} />
         </Routes>
       </Router>
 

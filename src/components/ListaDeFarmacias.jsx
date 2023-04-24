@@ -21,7 +21,7 @@ export function ListaDeFarmacias(){
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
 
-    const lista={
+    const lista=[{
         razaoSocial: razaoSocial,
         cnpj: cnpj,
         nomeFantasia: nomeFantasia,
@@ -35,10 +35,10 @@ export function ListaDeFarmacias(){
         cidadeFarmacia: cidadeFarmacia,
         estadoFarmacia: estadoFarmacia,
         complemento: complemento,
-    }
+    }];
 
-
-    const[modalFarmacias, setFarmacias] = React.useState(false);
+  
+    {/*const[modalFarmacias, setFarmacias] = useState(false);
     //Abrir o modal
     function abrirModal() {
         setFarmacias(true);
@@ -46,8 +46,9 @@ export function ListaDeFarmacias(){
 
     //Fechar o modal
     function fecharModal(){
-        setFarmacias(false);
-    }
+    setFarmacias(false);*/}
+
+    
             return(
 
                 <div className="table-farmacias">
@@ -84,20 +85,22 @@ export function ListaDeFarmacias(){
         
                 </Table>
 
+                
+
                 {lista.map((item) => {
                     return(
-                        <div>
-                            <li>key={item.razaoSocial}</li>
-                            <li>key={item.nomeFantasia}</li>
-                            <li>key={item.emailFarmacia}</li>
-                            <li>key={item.telefoneFarmacia}</li>
-                            <li>key={item.celularFarmacia}</li>
-                            <li>key={item.enderecoFarmacia}</li>
-                            <li>key={item.numeroFarmacia}</li>
-                            <li>key={item.bairroFarmacia}</li>
-                            <li>key={item.cidadeFarmacia}</li>
-                            <li>key={item.estadoFarmacia}</li>
-                            <li>key={item.complemento}</li>
+                        <div key={item.razaoSocial}>
+                            <li>{item.razaoSocial}</li>
+                            <li>{item.nomeFantasia}</li>
+                            <li>{item.emailFarmacia}</li>
+                            <li>{item.telefoneFarmacia}</li>
+                            <li>{item.celularFarmacia}</li>
+                            <li>{item.enderecoFarmacia}</li>
+                            <li>{item.numeroFarmacia}</li>
+                            <li>{item.bairroFarmacia}</li>
+                            <li>{item.cidadeFarmacia}</li>
+                            <li>{item.estadoFarmacia}</li>
+                            <li>{item.complemento}</li>
                             </div>
                     )
                 })}

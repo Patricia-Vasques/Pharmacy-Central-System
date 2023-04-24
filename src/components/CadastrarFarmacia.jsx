@@ -5,7 +5,7 @@ import { Header } from "./Header";
 import { useNavigate } from "react-router-dom";
 import "./cadastrarFarmacia.css";
 
-export function CadastrarFarmacia (props){
+export function CadastrarFarmacia (){
     const [razaoSocial, setRazaoSocial] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
@@ -73,19 +73,19 @@ export function CadastrarFarmacia (props){
     
 
         alert("Farmácia cadastrada com sucesso!")
-        navigate("/ListaDeFarmacia");
+        navigate("/ListaDeFarmacias");
 
         
 
         var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
+        if(!Array.isArray(listaFarmacias)){
+            listaFarmacias=[];
+        }
         listaFarmacias.push(farmacia)
  
         localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
 
-       
-
-        // campos que devem ser preenchidos obrigatoriamente
         
 
             setRazaoSocial('');

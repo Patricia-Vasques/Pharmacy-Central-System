@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Header } from "./Header";
+import { HeaderInicial } from "./HeaderInicial";
 import "./novoUsuario.css"
 
 export function NovoUsuario () {
@@ -27,7 +27,7 @@ export function NovoUsuario () {
 
     return(
         < div>
-        <Header />
+        <HeaderInicial />
 
         <form className="form-novoUsuario" >
 
