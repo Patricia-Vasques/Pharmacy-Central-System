@@ -1,22 +1,26 @@
 import React, { useState } from "react";
-import { Table, ListGroup, ListGroupItem, Row, Buttom, Modal  } from "react-bootstrap"
+import { Table, ListGroup, ListGroupItem, Row, Button, Modal  } from "react-bootstrap";
+import  {Header } from "./Header";
 
 export function ListaDeFarmacias(){
 
     const [tabelaSelecionada, setTabelaSelecionada] = useState(null)
+    
     const listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
     const exibirTarbela = (item) => setTabelaSelecionada (item)
 
     return(
         <Row>
-        {Object.keys(listaFarmacias).map((item) => {
+            <Header />
+
+        {(listaFarmacias).map((item) => {
                 const farmacia = listaFarmacias[item];
                 return(
                     <Table key={item} style={{widt: "200px"}}>
                         <Table.Title> {farmacia.razaoSocial}</Table.Title>
                         <Table.Text>{farmacia.telefoneFarmacia}</Table.Text>
-                        <Buttom onClick={() => exibirTarbela (item)}> Informações</Buttom>
+                        <Button onClick={() => exibirTarbela (item)}> Informações</Button>
                         {tabelaSelecionada === item &&(
                         <Modal show={true} onHide={() => setTabelaSelecionada(null)}>
                             <Modal.Header>
