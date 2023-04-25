@@ -1,12 +1,14 @@
 .form-cadastro-medicamentos{
     display: block;
-    
     background-color: rgb(214, 210, 210);
-    margin-bottom: 15px;
     border: solid 3px;
     border-radius: 3px;
     border-color: black;
-   
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 50px;
 }
 
 .form-group{
@@ -22,12 +24,18 @@
 }
 
 .text-cadastro-medicamentos{
+    text-align: center;
+    margin-top: 45px;
     color: black;
-    text-align: right;
-
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 40px;
 }
+
+
 .label-cadastroMedicamento{
+    display: flex;
     color: black;
+    margin-left: 150px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
@@ -35,7 +43,19 @@
 .input-cadastroMedicamento{
     background: white;
     color: black;
-    
+    margin: 8px;
     font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.button-cadastro-medicamento{
+    background-color: white;
+    color: black;
+    padding: 15px;
+    margin-top: 15px;
+    border: solid 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
