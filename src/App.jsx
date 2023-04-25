@@ -1,13 +1,12 @@
-import React from "react"
-import { useState, useEffect } from "react"
-import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { Login } from "./components/Login"
-import { NovoUsuario } from "./components/NovoUsuario"
-import { ListaDeFarmacias } from "./components/ListaDeFarmacias"
-import { CadastrarFarmacia } from "./components/CadastrarFarmacia"
-import { CadastroMedicamentos } from "./components/CadastroMedicamentos"
+import React from "react";
+import { useState, useEffect } from "react";
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Login } from "./components/Login";
+import { NovoUsuario } from "./components/NovoUsuario";
+import { ListaDeFarmacias } from "./components/ListaDeFarmacias";
+import { CadastrarFarmacia } from "./components/CadastrarFarmacia";
+import { CadastroMedicamentos } from "./components/CadastroMedicamentos";
 import { ListaDeMedicamentos } from "./components/ListaDeMedicamentos"
-import './App.css'
 
 function App() {
 
@@ -25,12 +24,12 @@ function App() {
    setFarmacias(lista)
   }, []);
 
-  const [medicamentos, setMedicamentos] =useState([]);
+  const [listaMedicamentos, setListaMedicamentos] =useState([]);
 
   useEffect(() => {
-    const medicamentosDoStorage = localStorage.getItem('medicamentos')
-  if(medicamentosDoStorage){
-    setMedicamentos(JSON.parse(medicamentosDoStorage))
+    const listaMedicamentosDoStorage = localStorage.getItem('listaMedicamentos')
+  if(listaMedicamentosDoStorage){
+    setListaMedicamentos(JSON.parse(listaMedicamentosDoStorage))
   }
 }, []);
 
@@ -39,8 +38,8 @@ function App() {
     setFarmacias([...farmacias, farmacia])
   }
 
-  const cadastrarMedicamento = (medicamento) =>{
-    setMedicamentos([...medicamentos, medicamento])
+  const cadastrarMedicamento = (listaMedicamentos) =>{
+    setMedicamentos([...listaMedicamentos, listaMedicamentos])
   }
 
   

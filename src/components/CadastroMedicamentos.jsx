@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import{ useState } from "react"
 import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
 import "./cadastroMedicamentos.css"
 
 export const CadastroMedicamentos = (props) => {
@@ -11,26 +12,20 @@ export const CadastroMedicamentos = (props) => {
     const [descricaoMedicamento, setDescricaoMedicamento] = useState('');
     const [precoMedicamento, setPrecoMedicamento] = useState('');
     const [tipoMedicamento, setTipoMedicamento] = useState('');
+    const navigate = useNavigate();
 
     function handleCadastrarMedicamentos (event) {
         event.preventDefault();
 
-        const medicamento ={
-            nomeMedicamento: nomeMedicamento,
-            laboratorioMedicamento: laboratorioMedicamento,
-            dosagemMedicamento: dosagemMedicamento,
-            descricaoMedicamento: descricaoMedicamento,
-            precoMedicamento: precoMedicamento,
-            tipoMedicamento: tipoMedicamento,
-        };
-
+        
         alert("Medicamento cadastrado com sucesso!");
 
-        var listaMedicamentos = JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
+        const  listaMedicamentos =[{nomeMedicamento, laboratorioMedicamento, dosagemMedicamento, descricaoMedicamento, precoMedicamento, tipoMedicamento}];
+         JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
 
         localStorage.setItem("listaMedicamentos", JSON.stringify(listaMedicamentos))
     
-        props.quandoCadastrar(medicamento);
+        props.quandoCadastrar(listaMedicamentos);
 
         //resetar os valores 
         setNomeMedicamento("");
@@ -39,6 +34,8 @@ export const CadastroMedicamentos = (props) => {
         setDescricaoMedicamento("");
         setPrecoMedicamento("");
         setTipoMedicamento("");
+
+        navigate("/ListaDeMedicamentos");
     }
 
     return (
@@ -79,8 +76,9 @@ export const CadastroMedicamentos = (props) => {
                         <option value="medicamento-controlado">Controlado</option>
                         <option value="medicamento-comum">Comum</option>
                     </select>
-
+                    <div>
                     <button className="button-cadastro-medicamento"> Cadastrar </button>
+                    </div>
                 </div>
 
             </form>
