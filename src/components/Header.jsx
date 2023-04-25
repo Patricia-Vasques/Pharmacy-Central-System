@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export function Header () {
     return(
         <div className="title-header">
-        <h1>Pharmacy Central System</h1>
+        <h1 className="text-header">Pharmacy Central System</h1>
 
         <div className="header-links">
             <div>
