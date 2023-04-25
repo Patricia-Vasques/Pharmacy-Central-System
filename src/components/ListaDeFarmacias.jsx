@@ -1,126 +1,84 @@
 import React, { useState } from "react";
-import { Table } from "react-bootstrap";
-import { Header } from "./Header";
-import Modal from 'react-modal';
-import { Link } from "react-router-dom";
-import "./listaDeFarmacias.css";
+import { Table, ListGroup, ListGroupItem, Row, Buttom, Modal  } from "react-bootstrap"
 
 export function ListaDeFarmacias(){
 
-    const [razaoSocial, setRazaoSocial] = useState('');
-    const [cnpj, setCnpj] = useState('');
-    const [nomeFantasia, setNomeFantasia] = useState('');
-    const [emailFarmacia, setEmailFarmacia] = useState('');
-    const [telefoneFarmacia, setTelefoneFarmacia] = useState('');
-    const [celularFarmacia, setCelularFarmacia] = useState('');
-    const [cepFarmacia, setCepFarmacia] = useState('');
-    const [enderecoFarmacia, setEnderecoFarmacia] = useState('');
-    const [numeroFarmacia, setNumeroFarmacia] = useState('');
-    const [bairroFarmacia, setBairroFarmacia] = useState('');
-    const [cidadeFarmacia, setCidadeFarmacia] = useState('');
-    const [estadoFarmacia, setEstadoFarmacia] = useState('');
-    const [complemento, setComplemento] = useState('');
+    const [tabelaSelecionada, setTabelaSelecionada] = useState(null)
+    const listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
-    const lista=[{
-        razaoSocial: razaoSocial,
-        cnpj: cnpj,
-        nomeFantasia: nomeFantasia,
-        emailFarmacia: emailFarmacia,
-        telefoneFarmacia: telefoneFarmacia,
-        celularFarmacia: celularFarmacia,
-        cepFarmacia: cepFarmacia,
-        enderecoFarmacia: enderecoFarmacia,
-        numeroFarmacia: numeroFarmacia,
-        bairroFarmacia: bairroFarmacia,
-        cidadeFarmacia: cidadeFarmacia,
-        estadoFarmacia: estadoFarmacia,
-        complemento: complemento,
-    }];
+    const exibirTarbela = (item) => setTabelaSelecionada (item)
 
-  
-    {/*const[modalFarmacias, setFarmacias] = useState(false);
-    //Abrir o modal
-    function abrirModal() {
-        setFarmacias(true);
-    }
+    return(
+        <Row>
+        {Object.keys(listaFarmacias).map((item) => {
+                const farmacia = listaFarmacias[item];
+                return(
+                    <Table key={item} style={{widt: "200px"}}>
+                        <Table.Title> {farmacia.razaoSocial}</Table.Title>
+                        <Table.Text>{farmacia.telefoneFarmacia}</Table.Text>
+                        <Buttom onClick={() => exibirTarbela (item)}> Informações</Buttom>
+                        {tabelaSelecionada === item &&(
+                        <Modal show={true} onHide={() => setTabelaSelecionada(null)}>
+                            <Modal.Header>
+                                <Modal.Body>
+                                    <ListGroup>
+                                        <ListGroupItem>
+                                            Farmacia: {farmacia.razaoSocial}
+                                        </ListGroupItem>
 
-    //Fechar o modal
-    function fecharModal(){
-    setFarmacias(false);*/}
+                                        <ListGroupItem>
+                                            cnpj: {farmacia.cnpj}
+                                        </ListGroupItem>
 
-    
-            return(
+                                        <ListGroupItem>
+                                            Nome Fantasia: {farmacia.nomeFantasia}
+                                        </ListGroupItem>
 
-                <div className="table-farmacias">
-                    <div>
-                        <Header />
+                                        <ListGroupItem>
+                                            E-mail: {farmacia.emailFarmacia}
+                                        </ListGroupItem>
 
-                        <Link to="/CadastrarFarmacia">Cadastrar Nova Farmácia</Link>
-                    </div>
-                <p>Lista de Farmácias cadastradas</p>
+                                        <ListGroupItem>
+                                            Telefone: {farmacia.telefoneFarmacia}
+                                        </ListGroupItem>
 
-                <Table striped bordered hover size="sm">
-                    <thead>
-                        <tr>
-                        <th>Razão Social</th>
-                        <th>CNPJ</th>
-                        <th>Nome Fantasia</th>
-                        <th>E-mail</th>
-                        <th>Telefone</th>
-                        <th>Celular</th>
-                        <th>Endereço</th>
-                        <th>Número</th>
-                        <th>Bairro</th>
-                        <th>Cidade</th>
-                        <th>Estado</th>
-                        <th>Complemento</th>
-                        </tr>
-                    </thead>
+                                        <ListGroupItem>
+                                           Celular: {farmacia.celularFarmacia}
+                                        </ListGroupItem>
 
-                    <tbody>
-                        <tr>
-                            <td>Farmácia do Zézinho</td>
-                        </tr>
-                    </tbody>
-        
-                </Table>
+                                        <ListGroupItem>
+                                           Cep: {farmacia.cepFarmacia}
+                                        </ListGroupItem>
 
-                
+                                        <ListGroupItem>
+                                          Endereço: {farmacia.enderecoFarmacia}
+                                        </ListGroupItem>
 
-                {lista.map((item) => {
-                    return(
-                        <div key={item.razaoSocial}>
-                            <li>{item.razaoSocial}</li>
-                            <li>{item.nomeFantasia}</li>
-                            <li>{item.emailFarmacia}</li>
-                            <li>{item.telefoneFarmacia}</li>
-                            <li>{item.celularFarmacia}</li>
-                            <li>{item.enderecoFarmacia}</li>
-                            <li>{item.numeroFarmacia}</li>
-                            <li>{item.bairroFarmacia}</li>
-                            <li>{item.cidadeFarmacia}</li>
-                            <li>{item.estadoFarmacia}</li>
-                            <li>{item.complemento}</li>
-                            </div>
-                    )
-                })}
+                                        <ListGroupItem>
+                                          Número: {farmacia.numeroFarmacia}
+                                        </ListGroupItem>
+
+                                        <ListGroupItem>
+                                         Bairro: {farmacia.bairroFarmacia}
+                                        </ListGroupItem>
+
+                                        <ListGroupItem>
+                                        Estado: {farmacia.estadoFarmacia}
+                                        </ListGroupItem>
+
+                                        <ListGroupItem>
+                                         Complemento: {farmacia.complemento}
+                                        </ListGroupItem>
 
 
-                <div>
-
-            <button onClick={abrirModal}> Detalhes da Farmácia </button>
-
-            <Modal farmacias = {modalFarmacias}
-            onRequestClose={fecharModal}
-            contentLabel="Modal Exemplo" >
-
-                <h1>Detalhes</h1>
-                <button onClick={fecharModal}>Fechar</button>
-                <div>Sou um Modal</div>
-            </Modal>
-        </div>
-                </div>
-            )
+                                    </ListGroup>
+                                </Modal.Body>
+                            </Modal.Header>
+                        </Modal>
+                        )}
+                    </Table>
+                );
+        })}
+        </Row>
+    )
         }
-        
-    
