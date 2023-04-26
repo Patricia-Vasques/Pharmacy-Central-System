@@ -1,109 +1,100 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, ListGroup, ListGroupItem, Row, Button, Modal  } from "react-bootstrap";
 import  {Header } from "./Header";
 
-export function ListaDeFarmacias(){
-
-    const [tabelaSelecionada, setTabelaSelecionada] = useState(null)
+export function ListaDeFarmacias() {
+    const [listaFarmacias, setListaFarmacias] = useState([])
+    const [farmaciaSelecionada, setFarmaciaSelecionada] = useState(null)
+  
+  
+    useEffect(() => {
+      const listaFarmaciasStorage = localStorage.getItem("listaFarmacias");
+      if(listaFarmaciasStorage){
+        setListaFarmacias(JSON.parse(listaFarmaciasStorage))
+      }
+    }, [])
     
-    const listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
-
-    const exibirTarbela = (item) => setTabelaSelecionada (item)
-
-    const  [showModal, setModal] = useState(false)
-
-    return(
+  
+  
+    return (
         <div class="d-flex justify-content-center">
-        <Row>
-
-            <Header />
-
-                    <Table class="table table-bordered text-center" >
-                        <thead >
-                            <tr><th scope="col">#</th>
-                                <th scope="col"> Nome Fantasia</th>
-                                <th scope="col"> Telefone </th>
-                            </tr>
-                        </thead>
-                        
-                        <tbody>
-                        {(listaFarmacias).map((farmacia) => {
-
-                return(
-                    <tr key = {farmacia.cnpj}>
-                        <th scope="row">1</th>
-                        <td>{farmacia.nomeFantasia}</td>
-                        <td>{farmacia.telefoneFarmacia}</td>
-                        
-
-                        <Button className="btn btn-outline-secondary" onClick={() => exibirTarbela (item)}> Informações</Button>
-                        {exibirTarbela === farmacia.cnpj &&(
-                        
-                        
-                        <Modal show={showModal} onHide={() => setTabelaSelecionada(null)}>
-                            <Modal.Header> Titulo</Modal.Header>
-                                <Modal.Body>
-                                    <ListGroup>
-                                        <ListGroupItem>
-                                            Farmacia: {farmacia.razaoSocial}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                            cnpj: {farmacia.cnpj}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                            Nome Fantasia: {farmacia.nomeFantasia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                            E-mail: {farmacia.emailFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                            Telefone: {farmacia.telefoneFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                           Celular: {farmacia.celularFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                           Cep: {farmacia.cepFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                          Endereço: {farmacia.enderecoFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                          Número: {farmacia.numeroFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                         Bairro: {farmacia.bairroFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                        Estado: {farmacia.estadoFarmacia}
-                                        </ListGroupItem>
-
-                                        <ListGroupItem>
-                                         Complemento: {farmacia.complemento}
-                                        </ListGroupItem>
-                                    </ListGroup>
-                                </Modal.Body>
-                
-                        </Modal>
-                        )}
-                        
+            <Row>
+                <Header />
+                <Table class="table table-bordered text-center" >
+                    <thead >
+                        <tr><th scope="col">#</th>
+                            <th scope="col"> Nome Fantasia</th>
+                            <th scope="col"> Telefone </th>
                         </tr>
-                        )
+                    </thead>
+                    <tbody>
+                        {listaFarmacias.map((farmacia) => {
+                            return (
+                                <tr key={farmacia?.cnpj}>
+                                    <th scope="row">1</th>
+                                    <td>{farmacia?.nomeFantasia}</td>
+                                    <td>{farmacia?.telefoneFarmacia}</td>
+                                    <Button className="btn btn-outline-secondary" onClick={() => setFarmaciaSelecionada(farmacia)}> Informações</Button>
+                                </tr>
+                            )
                         })}
-                        </tbody>
-    
-                    </Table>
-        </Row>
+                    </tbody>
+                </Table>
+            </Row>
+            <Modal show={farmaciaSelecionada} onHide={() => setFarmaciaSelecionada(null)}>
+                <Modal.Header> Titulo</Modal.Header>
+                <Modal.Body>
+                    <ListGroup>
+                        <ListGroupItem>
+                            Farmacia: {farmaciaSelecionada?.razaoSocial}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            cnpj: {farmaciaSelecionada?.cnpj}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Nome Fantasia: {farmaciaSelecionada?.nomeFantasia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            E-mail: {farmaciaSelecionada?.emailFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Telefone: {farmaciaSelecionada?.telefoneFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Celular: {farmaciaSelecionada?.celularFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Cep: {farmaciaSelecionada?.cepFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Endereço: {farmaciaSelecionada?.enderecoFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Número: {farmaciaSelecionada?.numeroFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Bairro: {farmaciaSelecionada?.bairroFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Estado: {farmaciaSelecionada?.estadoFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Complemento: {farmaciaSelecionada?.complemento}
+                        </ListGroupItem>
+                    </ListGroup>
+                </Modal.Body>
+            </Modal>
         </div>
-        )
+    )
   }
