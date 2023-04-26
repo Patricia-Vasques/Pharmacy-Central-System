@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Modal, Card, ListGroup, ListGroupItem, Button } from "react-bootstrap"
 import "./listaMedicamentos.css";
 
-Modal.setAppElement("#root")
 
-export function CadastroMedicamentos () {
+
+export function ListaDeMedicamentos () {
     const [listaMedicamentos, setListaMedicamentos] = useState([])
     const [medicamentoSelecionado, setMedicamentoSelecionado] = useState(null)
 
@@ -20,22 +20,23 @@ export function CadastroMedicamentos () {
          <div className="card data-bs-toggle">
             <Header />
         
-        <Card key={medicamento} style={{width:"250px"}}>
-            <Card.Img    style={{
+            <div>
+             {listaMedicamentos.map((medicamento) => {
+                return(
+                <Card style={{width:"250px"}}>
+                   <Card.Img    style={{
                 width: "200px",
                 margin: "auto",
               }}
               src="https://th.bing.com/th/id/OIP.AuxQBiLqdNx2b5pe9eeseAAAAA?pid=ImgDet&rs=1" alt="Foto do medicamento conforme a liberação da ANVISA" width="120px" />
-             {listaMedicamentos.map((medicamento) => {
-                return(
-                    <div>
               <Card.Title>{medicamento?.nomeMediamento}</Card.Title>
               <Card.Text>{medicamento?.labotarorioMedicamento}</Card.Text>
-              </div>
-
-               )
+             
+              </Card>
+                )
               })}
-              <Button className="btn btn-outline-secondary" onClick={() => setMedicamentoSelecionado(medicamento)}>Detalhes</Button>
+               </div>
+            
              
                 <Modal show={medicamentoSelecionado} onHide={() => setMedicamentoSelecionado(null)}>
             <Modal.Header>Titulo</Modal.Header>
@@ -69,8 +70,6 @@ export function CadastroMedicamentos () {
                 </ListGroup>
             </Modal.Body>
         </Modal>
-              )
-              </Card>
         </div>
     )
 }
