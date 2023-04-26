@@ -51,7 +51,7 @@ Os dados cadastrados são salvos no localStorage.</p>
 <p>Como proposta do projeto, tinhamos que criar uma página com funcionalidade extra, na qual eu escolhi criar uma página de cadastro,
 que segue os parâmetros da página de Login.</p>
 
-<h3> Menu <h3>
+<h3>Págian de  Menu <h3>
 <p>Por fim criei uma lista de Menu de navegação para as rotas dentro das páginas </p>
 
 
