@@ -6,6 +6,8 @@
 
 -[Sobre](#Sobre) </br>
 -[Páginas](#Páginas) </br>
+-[ComoFunciona](#ComoFunciona)</br>
+-[PontosDeMelhorias](#PontosDeMelhorias)
 
 ## Sobre
 
@@ -54,6 +56,25 @@ que segue os parâmetros da página de Login.</p>
 <h3>Página de  Menu <h3>
 <p>Por fim criei uma lista de Menu de navegação para as rotas dentro das páginas. </p>
 
+## ComoFunciona
+
+<h3> Como Funciona o sistema </h3>
+<p> Primeiro fazer o clone do projeto e instalar as dependências: react-bootstrap, react-router-dom que foram usadas para a elaboração deste projeto. </br>
+Ao fazer ele rodar no navegador a primeira página a abrir será o de login, onde para acessar basta colocar um e-mail e uma senha que deve conter letras e números com no mínimo 8 caracteres.</br>
+Ao efetuar o login o usuário será direcionado para a página de lista de farmácias, onde vai conter todas as farmácias já cadastradas e ao lado tem um botão informações 
+feito através de um Modal no qual trás todos os dados preenchidos no cadastro da farmácia. </br>
+Para o cadastro da farmácia temos os dados principais como nome, nome fatasia, cnpj e telefones, além do endereço que ao colocar o cep os campos de endereço, bairro, cidade e estado são preenchidos automáticos, ficando para o usuário preencher somente o número e o complemento que neste caso o complemento é opcional. </br>
+Para cadastrar um medicamento, basta clicar em cadastrar medicamento no menu que já redireciona para a página de cadastro, onde todos os campos devem ser preenchido sendo apenas a descrição como opcional. Ao clicar no botão cadastrar o usuário será direcionado a página de lista de medicamentos, no qual é feito em Card tendo um botão Detalhes que ao clicar neste botão aparece as informções do medicamento.</br>
+Por fim ao clicar em Logout o usuário é redirecionado para a página de login novamente.</br>
+Os dados dos cadastro são salvos no LocalStorage no qual simula um Banco de Dados.
+</br>
+Como uma funcionalidade extra criei a página de cadastro do usuário no qual seguem das mesma regras da página de login, tendo que ser preenchidos o e-mail e a senha com no mínimo 8 caracteres entre letras e números.
 
 
+## PontosDeMelhorias
 
+<h3>Pontos de melhorias</h3>
+
+<p> Primeiramente, como melhoria seria a estilização, pois tem muitas coisas que ao meu ver podem ser melhorados, como por exemplo os alinhamentos, tamanhos, formato do formulário, enhtre outros. </br>
+Cabe aqui na melhoria também colocar a responsividade, o mapa, no formulário poderia melhorar alguns requisitos como para telefone e cnpj. </br>
+O que me preocupou e que fica também como ponto de melhoria é o uso do Git Flow que acabei me perdendo ao fazer as Branch e commits.
