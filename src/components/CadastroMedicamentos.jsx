@@ -26,7 +26,7 @@ export const CadastroMedicamentos = (props) => {
 
     function handleCadastrarMedicamentos (event) {
         event.preventDefault();
-
+    if(nomeMedicamento !== ""  && laboratorioMedicamento !== ""  && dosagemMedicamento !== ""  && precoMedicamento !== ""  && tipoMedicamento !== "" ){
         
         alert("Medicamento cadastrado com sucesso!");
 
@@ -50,8 +50,11 @@ export const CadastroMedicamentos = (props) => {
         setTipoMedicamento("");
 
         navigate("/ListaDeMedicamentos");
+    
+     }else {
+        alert("Preencha  os campos obrigatórios")
     }
-
+}
     return (
         <div>
             < Header/>
@@ -64,22 +67,22 @@ export const CadastroMedicamentos = (props) => {
                 
                 <div className="form-group-mediamento">
                     <label className="label-cadastroMedicamento" htmlFor="nome-medicamento">Nome do Medicamento:</label>
-                    <input className="input-cadastroMedicamento" type="text" name="nome -medicamento" id="nome-medicamento" placeholder="Nome do medicamento"  onChange={(e) => setNomeMedicamento(e.target.value)} />
+                    <input className="input-cadastroMedicamento" type="text" name="nome -medicamento" id="nome-medicamento" placeholder="Nome do medicamento"  onChange={(e) => setNomeMedicamento(e.target.value)} required />
                 </div>
 
                 <div className="form-group-mediamento">
                     <label className="label-cadastroMedicamento" htmlFor="nome-laboratorio">Nome do Laboratório:</label>
-                    <input className="input-cadastroMedicamento" type="text" name="nome-laboratorio" id="nome-laboratorio" placeholder="Nome do laboratório"   onChange={(e) => setLaboratorioMedicamento(e.target.value)}/>
+                    <input className="input-cadastroMedicamento" type="text" name="nome-laboratorio" id="nome-laboratorio" placeholder="Nome do laboratório"   onChange={(e) => setLaboratorioMedicamento(e.target.value)} required/>
                 </div>
 
                 <div className="form-group-mediamento">
                     <label className="label-cadastroMedicamento" htmlFor="dosagem-medicamento">Dosagem do medicamento:</label>
-                    <input className="input-cadastroMedicamento" type="text" name="dosagem-medicamento" id="dosagem-medicamento" placeholder="Dosagem do medicamento"  onChange={(e) => setDosagemMedicamento(e.target.value)} />
+                    <input className="input-cadastroMedicamento" type="text" name="dosagem-medicamento" id="dosagem-medicamento" placeholder="Dosagem do medicamento"  onChange={(e) => setDosagemMedicamento(e.target.value)} required/>
                 </div>
 
                 <div className="form-group-mediamento">
                     <label className="label-cadastroMedicamento" htmlFor="preco-medicamento">Preço: R$</label>
-                    <input className="input-cadastroMedicamento" type="text" min="0" name="preco-medicamento" id="preco-medicamento" placeholder="Preço" onChange={(e) => setPrecoMedicamento(e.target.value)} />
+                    <input className="input-cadastroMedicamento" type="text" min="0" name="preco-medicamento" id="preco-medicamento" placeholder="Preço" onChange={(e) => setPrecoMedicamento(e.target.value)} required/>
                 </div>
 
                 <div className="form-group-mediamento">
