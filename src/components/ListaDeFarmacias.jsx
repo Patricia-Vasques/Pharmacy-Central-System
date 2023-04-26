@@ -1,94 +1,100 @@
-import React from "react";
-import Modal from "react-modal";
-import { Header } from "./Header";
-import { Link } from "react-router-dom";
-import "./listaDeFarmacias.css";
+import React, { useState, useEffect } from "react";
+import { Table, ListGroup, ListGroupItem, Row, Button, Modal  } from "react-bootstrap";
+import  {Header } from "./Header";
 
-    export function ListaDeFarmacias(){
-
-        //Criar uma lista das farmácias 
-        const farmaciasCadastradas = [
-            {id:1,
-                razaoSocial: "",
-                cnpj: "",
-                nomeFantasia: "",
-                emailFarmacia: "",
-                telefoneFarmacia: "",
-                celularFarmacia: "",
-                cepFarmacia: "",
-                enderecoFarmacia: "",
-                numeroFarmacia: "",
-                bairroFarmacia: "",
-                cidadeFarmacia: "",
-                estadoFarmacia: "",
-                complemento: "",}
-        ]
-
-        const ListaNova = farmaciasCadastradas.map((farmacia)=>{
-            return farmacia.razaoSocial +" "+ farmacia.cnpj +" "+  farmacia.nomeFantasia +" "+farmacia.emailFarmacia +" "+ farmacia.telefoneFarmacia +" "+ farmacia.celularFarmacia
-            +" "+ farmacia.cepFarmacia +" "+ farmacia.enderecoFarmacia +" "+ farmacia.numeroFarmacia  +" "+ farmacia.bairroFarmacia +" "+farmacia.cidadeFarmaciav
-            +" "+ farmacia.estadoFarmacia +" "+ farmacia.complemento
-        });
-        
-        console.log(ListaNova);
-        
-        //criando o modal
-        Modal.setAppElement('#root');
-
-        const[modalFarmacias, setFarmacias] = React.useState(false);
-
-        //Abrir o modal
-        function abrirModal() {
-            setFarmacias(true);
-        }
-
-        //Fechar o modal
-        function fecharModal(){
-            setFarmacias(false);
-        }
-
+export function ListaDeFarmacias() {
+    const [listaFarmacias, setListaFarmacias] = useState([])
+    const [farmaciaSelecionada, setFarmaciaSelecionada] = useState(null)
+  
+  
+    useEffect(() => {
+      const listaFarmaciasStorage = localStorage.getItem("listaFarmacias");
+      if(listaFarmaciasStorage){
+        setListaFarmacias(JSON.parse(listaFarmaciasStorage))
+      }
+    }, [])
     
+  
+  
     return (
-        <div>
-
-            <Header />
-
-            <div className="text-listaFarmacias">
-                <h1 className="text-farmaciasCadastradas"> Farmácias cadastradas</h1>
-            </div>
-        
-        <table className="table-listaFarmacias">
-            <thead>
-                <tr>
-                    <th>Farmácia</th>
-                    <th>Telefone</th>
-                </tr>
-        </thead>
-        
-
-        <tbody>
-            {ListaDeFarmacias && ListaDeFarmacias.map((farmacia) => 
-            <tr key={farmacia.id}>
-                <td>{farmacia.farmacia}</td>
-                <td>{farmacia.telefone}</td>
-            </tr>)}
-        </tbody>
-        </table>
-
-        <Link to="/CadastrarFarmacia">Cadastrar Nova Farmácia</Link>
-
-        <div>
-            <button onClick={abrirModal}> Detalhes da Farmácia </button>
-            <Modal farmacias = {modalFarmacias}
-            onRequestClose={fecharModal}
-            contentLabel="Modal Exemplo" >
-
-                <h1>Detalhes</h1>
-                <button onClick={fecharModal}>Fechar</button>
-                <div>Sou um Modal</div>
+        <div className="d-flex justify-content-center">
+            <Row>
+                <Header />
+                <Table class="table table-bordered text-center" >
+                    <thead >
+                        <tr><th scope="col">#</th>
+                            <th scope="col"> Nome Fantasia</th>
+                            <th scope="col"> Telefone </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listaFarmacias.map((farmacia) => {
+                            return (
+                                <tr key={farmacia?.cnpj}>
+                                    <th scope="row">1</th>
+                                    <td>{farmacia?.nomeFantasia}</td>
+                                    <td>{farmacia?.telefoneFarmacia}</td>
+                                    <Button className="btn btn-outline-secondary" onClick={() => setFarmaciaSelecionada(farmacia)}> Informações</Button>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
+            </Row>
+            <Modal show={farmaciaSelecionada} onHide={() => setFarmaciaSelecionada(null)}>
+                <Modal.Header> Titulo</Modal.Header>
+                <Modal.Body>
+                    <ListGroup>
+                        <ListGroupItem>
+                            Farmacia: {farmaciaSelecionada?.razaoSocial}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            cnpj: {farmaciaSelecionada?.cnpj}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Nome Fantasia: {farmaciaSelecionada?.nomeFantasia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            E-mail: {farmaciaSelecionada?.emailFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Telefone: {farmaciaSelecionada?.telefoneFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Celular: {farmaciaSelecionada?.celularFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Cep: {farmaciaSelecionada?.cepFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Endereço: {farmaciaSelecionada?.enderecoFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Número: {farmaciaSelecionada?.numeroFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Bairro: {farmaciaSelecionada?.bairroFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Estado: {farmaciaSelecionada?.estadoFarmacia}
+                        </ListGroupItem>
+  
+                        <ListGroupItem>
+                            Complemento: {farmaciaSelecionada?.complemento}
+                        </ListGroupItem>
+                    </ListGroup>
+                </Modal.Body>
             </Modal>
-        </div>
         </div>
     )
 }
-

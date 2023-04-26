@@ -1,19 +1,23 @@
+
 .form-cadastroFarmacia{
-        display: block;
-        background-color: rgb(214, 210, 210);
-        border: solid 3px;
-        border-radius: 3px;
-        border-color: black;
-        text-align: center;
-        margin-top: 50px;
-        margin-left: 10%;
-        margin-right: 10%;
-        padding-top: 15px;
-        padding-bottom: 20px;
+    display: block;
+    font-size: 20px;
+    background-color: rgb(214, 210, 210);
+    border: solid 3px;
+    border-radius: 3px;
+    border-color: black;
+    text-align: center;
+    margin-top:40px;
+    margin-left: 22%;
+    margin-right: 10%;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .text-cadastroNovaFarmacia{
     text-align: center;
+    margin-top: 45px;
     display: block;
     color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -21,10 +25,11 @@
 }
 
 .label-razaoSocial{
-    float: left;
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-razaoSocial{
@@ -36,10 +41,11 @@
 }
 
 .label-cnpj{
-    float: right;
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-cnpj{
@@ -51,9 +57,11 @@
 }
 
 .label-nomeFantasia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-nomeFantasia{
@@ -65,9 +73,11 @@
 }
 
 .label-emailFarmacia{  
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-emailFarmacia{
@@ -79,9 +89,11 @@
 }
 
 .label-telefoneFarmacia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-telefoneFarmacia{
@@ -93,9 +105,11 @@
 }
 
 .label-celularFarmacia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-celularFarmacia{
@@ -115,9 +129,11 @@
 }
 
 .label-cep{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-cep{
@@ -129,9 +145,11 @@
 }
 
 .label-endereçoFarmacia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-endereçoFarmacia{
@@ -143,9 +161,11 @@
 }
 
 .label-numeroEndereco{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-numeroEndereco{
@@ -157,9 +177,11 @@
 }
 
 .label-bairroFarmacia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-bairroFarmacia{
@@ -171,9 +193,11 @@
 }
 
 .label-cidadeFarmacia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-cidadeFarmacia{
@@ -185,9 +209,11 @@
 }
 
 .label-estadoFarmacia{
+    display: flex;
     color: black;
+    margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-estadoFarmacia{
@@ -199,9 +225,11 @@
 }
 
 .label-complementoFarmacia{
+    display: flex;
     color: black;
+    margin-left: 150px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .input-complementoFarmacia{

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Header } from "./Header";
+import { HeaderInicial } from "./HeaderInicial";
 import "./login.css";
 
 export function Login () {
@@ -28,7 +28,7 @@ export function Login () {
     return (
   
         <div>
-            <Header />
+            <HeaderInicial />
 
         <form className="form-container">
        

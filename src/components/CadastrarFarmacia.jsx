@@ -1,12 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { Header } from "./Header";
-import { ListaDeFarmacias } from "./ListaDeFarmacias";
+import { useNavigate } from "react-router-dom";
 import "./cadastrarFarmacia.css";
 
-
-
-export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
+export function CadastrarFarmacia (){
     const [razaoSocial, setRazaoSocial] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
@@ -20,6 +19,24 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
     const [cidadeFarmacia, setCidadeFarmacia] = useState('');
     const [estadoFarmacia, setEstadoFarmacia] = useState('');
     const [complemento, setComplemento] = useState('');
+    const navigate = useNavigate();
+
+    
+    const farmacia= {
+        razaoSocial: razaoSocial,
+        cnpj: cnpj,
+        nomeFantasia: nomeFantasia,
+        emailFarmacia: emailFarmacia,
+        telefoneFarmacia: telefoneFarmacia,
+        celularFarmacia: celularFarmacia,
+        cepFarmacia: cepFarmacia,
+        enderecoFarmacia: enderecoFarmacia,
+        numeroFarmacia: numeroFarmacia,
+        bairroFarmacia: bairroFarmacia,
+        cidadeFarmacia: cidadeFarmacia,
+        estadoFarmacia: estadoFarmacia,
+        complemento: complemento,
+    }
 
     //Buscar o Cep pelo site dos correios e preencher automatico os campos//
 
@@ -37,98 +54,70 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 setBairroFarmacia(dados.bairro);
                 setCidadeFarmacia(dados.localidade);
                 setEstadoFarmacia(dados.uf);
-                setEndereco(dados.logradouro);
-                setBairro(dados.bairro);
-                setCidade(dados.localidade)
-                setEstado(dados.uf)
-          
+
     })
 .catch ((error) => {
     console.log("Ops! Ocorreu um erro!", error);
 })}}
 
-//mensagem quando enviar o formulário
-    function cadastrarFarmacias(e){
-        e.preventDefault();
-        console.log("Farmácia cadastrada com sucesso!")
-
-        var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
-
-        //adicionar um novo objeto com todos os dados da farmacia na lista farmacia
-        listaFarmacias.push({
-            razaoSocial,
-            cnpj,
-            nomeFantasia,
-            emailFarmacia,
-            telefoneFarmacia,
-            celularFarmacia,
-            cepFarmacia,
-            enderecoFarmacia,
-            numeroFarmacia,
-            bairroFarmacia,
-            cidadeFarmacia,
-            estadoFarmacia,
-            complemento,
-        })
-        //salvando no localStorage
-        localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
-    }
-    
+   
     //função para quando acionar o botão cadastrar nova farmácia só vá para frente se tiver preenchido os campos obrigatórios
 
     function handleCadastrarFarmacia(event) {
         event.preventDefault();
 
-        // campos que devem ser preenchidos obrigatoriamente
         if (razaoSocial !== ""  && cnpj !== "" && nomeFantasia !== "" && emailFarmacia !== "" && telefoneFarmacia !== "" 
         && celularFarmacia !== "" && cepFarmacia !== "" && enderecoFarmacia !== "" && numeroFarmacia !== "" && bairroFarmacia !== ""
         && cidadeFarmacia !== "" && estadoFarmacia !== "" && complemento == ""){
+
+    
+
+        alert("Farmácia cadastrada com sucesso!")
+        navigate("/ListaDeFarmacias");
+
+        
+
+        var listaFarmacias = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
+
+        if(!Array.isArray(listaFarmacias)){
+            listaFarmacias=[];
+        }
+        listaFarmacias.push(farmacia)
+ 
+        localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
+
+        
+
+            setRazaoSocial('');
+            setCnpj('');
+            setNomeFantasia('');
+            setEmailFarmacia('');
+            setTelefoneFarmacia('');
+            setCelularFarmacia('');
+            setCepFarmacia('');
+            setEnderecoFarmacia('');
+            setNumeroFarmacia('');
+            setBairroFarmacia('');
+            setCidadeFarmacia('');
+            setEstadoFarmacia('');
             
-            // passar os valores 
-        cadastrarNovaFarmacia({ razaoSocial, cnpj, nomeFantasia, emailFarmacia, telefoneFarmacia, celularFarmacia, cepFarmacia,
-                enderecoFarmacia, numeroFarmacia, bairroFarmacia, cidadeFarmacia, estadoFarmacia, complemento});
-
-            console.log("razao social:", razaoSocial);
-            console.log("cnpj:", cnpj);
-            console.log("nome fantasia:", nomeFantasia);
-            console.log("email farmacia", emailFarmacia);
-            console.log("telefone farmacia:", telefoneFarmacia);
-            console.log("celular farmacia:", celularFarmacia);
-            console.log("cep farmacia:", cepFarmacia);
-            console.log("endereco farmacia", enderecoFarmacia);
-            console.log("numero farmacia:", numeroFarmacia);
-            console.log("bairro farmacia:", bairroFarmacia);
-            console.log("cidade farmacia:", cidadeFarmacia);
-            console.log("estado farmacia", estadoFarmacia);
-            console.log("complemento", complemento);
-
+        
 
         }else{
             alert("Preencha todos os campos!")
 
-                setRazaoSocial([]);
-                setCnpj([]);
-                setNomeFantasia([]);
-                setEmailFarmacia([]);
-                setTelefoneFarmacia([]);
-                setCelularFarmacia([]);
-                setCepFarmacia([]);
-                setEnderecoFarmacia([]);
-                setNumeroFarmacia([]);
-                setBairroFarmacia([]);
-                setCidadeFarmacia([]);
-                setEstadoFarmacia([]);
-                setComplemento([]);
             }}
 
     return(
         <div>
             <Header />
-
-        <form className="form-cadastroFarmacia" onSubmit={cadastrarFarmacias}>
             <div className="text-cadastroNovaFarmacia"> 
-                <h1>Cadastro de Nova Farmácia</h1>
+
+            <h1>Cadastro de Nova Farmácia</h1>
             </div>
+
+        <form className="form-cadastroFarmacia" onSubmit={handleCadastrarFarmacia}>
+        
 
             <div className="form-group">
                 <label className="label-razaoSocial" htmlFor="name"><b>Razão Social:</b></label>
@@ -159,13 +148,9 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 <label className="label-celularFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
                 <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
             </div>
-
+           
             <hr />
             {/*Parte do endereço no formulário*/}
-
-                <div className="text-enderecoCompleto">
-                    <h1>Endereço Completo</h1>
-                </div>
             
             <div className="form-group">
                 <label className="label-cep" htmlFor="cep" ><b>CEP:</b></label>
@@ -201,9 +186,14 @@ export function CadastrarFarmacia ({cadastrarNovaFarmacia}) {
                 <label className="label-complementoFarmacia" htmlFor="complementoFarmacia"><b>Complemento:</b></label>
                 <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
             </div>
-
+            <div >
             <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
+            </div>
             </form>
         </div>
     )
+}
+
+CadastrarFarmacia.propsType = {
+    quandoCadastrarFarmacia: PropTypes.func.isRequired
 }
