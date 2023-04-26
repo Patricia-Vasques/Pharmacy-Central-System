@@ -8,6 +8,7 @@ Modal.setAppElement("#root")
 
 export function ListaDeMedicamentos({medicamentos, laboratorio, tipo, dosagem, preco, descricao}){
     
+    const  listaMedicamentos = JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
