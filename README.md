@@ -23,19 +23,19 @@ uma de lista de medicamentos, uma de lista de medicamentos, além de um Menu.</p
 utilizei o useNavigate do React Router Dom. Os formulários foram feitos com conhecimento de HTML e Css</br>
 O requisito para esta página é que o usuário seja um e-mail e que a senha tenha no 8 caractéres ou mais sendo 
 que tem que ter números e letras, além disso quando o usuário fizer o Login ele será redirecionado para a página 
-de lista de farmácias já cadastradas </p>
+de lista de farmácias já cadastradas. </p>
 
 <h3>Lista de Farmácias</h3>
 <p> Para a criação desta página utlizei React bootstrap, onde nela consta as farmácias já cadastradas
 em forma de uma tabela que aparece somente o nome e o telefone, coloquei um botão de Informções utilizando um Modal, onde 
-ao clicar nele aparece as infomações completas que são os dados do cadastro da farmácia</p>
+ao clicar nele aparece as infomações completas que são os dados do cadastro da farmácia.</p>
 
 <h3> Cadastrar Farmácia </h3>
 <p> Como requisito nesta página criei um formulário, onde contém os campos obrigatórios de Razão social, cnpj, nome fantasia, e-mail, telefone,
 celular, endereço(contendo o Cep, logradouro, número e bairro) e por fim um campo opcional de complemento. </br>
 Para a criação do cep foi usado um API do ViaCEP do IBGE, que faz o preenchimento automático dos campos de logradouro, bairro e cidade, ficando 
 para o uruário preencher somente os campos de número e complemento. Ao finalizar o cadastro o usuário recebe uma mensagem de cadastro feito com sucesso! </br>
-Para a validação dos campos usei o método de onSubmit que foi dado como requisito, os dados são salvos no localStorage que simula um banco de dados</p>
+Para a validação dos campos usei o método de onSubmit que foi dado como requisito, os dados são salvos no localStorage que simula um banco de dados.</p>
 
 <h3> Lista de Medicamentos</h3>
 <p> Para a criação desta página utilizei o boostratp. </br>
@@ -51,8 +51,8 @@ Os dados cadastrados são salvos no localStorage.</p>
 <p>Como proposta do projeto, tinhamos que criar uma página com funcionalidade extra, na qual eu escolhi criar uma página de cadastro,
 que segue os parâmetros da página de Login.</p>
 
-<h3>Págian de  Menu <h3>
-<p>Por fim criei uma lista de Menu de navegação para as rotas dentro das páginas </p>
+<h3>Página de  Menu <h3>
+<p>Por fim criei uma lista de Menu de navegação para as rotas dentro das páginas. </p>
 
 
 
