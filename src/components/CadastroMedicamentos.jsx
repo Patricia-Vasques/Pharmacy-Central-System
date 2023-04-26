@@ -27,7 +27,7 @@ export const CadastroMedicamentos = (props) => {
     function handleCadastrarMedicamentos (event) {
         event.preventDefault();
 
-        
+        if( nomeMedicamento !== "" && laboratorioMedicamento !== "" && dosagemMedicamento !== "" && precoMedicamento !== "" && tipoMedicamento!== "" ){
         alert("Medicamento cadastrado com sucesso!");
 
         const  listaMedicamentos = JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
@@ -39,17 +39,21 @@ export const CadastroMedicamentos = (props) => {
 
         localStorage.setItem("listaMedicamentos", JSON.stringify(listaMedicamentos))
         
-        
+           //resetar os valores 
+           setNomeMedicamento("");
+           setLaboratorioMedicamento("");
+           setDosagemMedicamento("");
+           setDescricaoMedicamento("");
+           setPrecoMedicamento("");
+           setTipoMedicamento("");
+   
+           navigate("/ListaDeMedicamentos");
+           
+    }else{
+        alert("Preencha os campos obrigatórios")
+    }
 
-        //resetar os valores 
-        setNomeMedicamento("");
-        setLaboratorioMedicamento("");
-        setDosagemMedicamento("");
-        setDescricaoMedicamento("");
-        setPrecoMedicamento("");
-        setTipoMedicamento("");
-
-        navigate("/ListaDeMedicamentos");
+     
     }
 
     return (
