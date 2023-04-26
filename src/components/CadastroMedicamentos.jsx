@@ -69,7 +69,7 @@ export const CadastroMedicamentos = (props) => {
 
                 <div className="form-group">
                     <label className="label-cadastroMedicamento" htmlFor="nome-laboratorio">Nome do Laboratório:</label>
-                    <input className="input-cadastroMedicamento" type="text" name="nome-laboratorio" id="nome-laboratorio" placeholder="Nome do laboratório"   onChange={(e) => setNomeLaboratorio(e.target.value)}/>
+                    <input className="input-cadastroMedicamento" type="text" name="nome-laboratorio" id="nome-laboratorio" placeholder="Nome do laboratório"   onChange={(e) => setLaboratorioMedicamento(e.target.value)}/>
                 </div>
 
                 <div className="form-group">

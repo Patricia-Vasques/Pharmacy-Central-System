@@ -17,26 +17,26 @@ export function ListaDeMedicamentos () {
     }, [])
 
     return(
-         <div className="card data-bs-toggle">
-            <Header />
-        
-            <div>
-             {listaMedicamentos.map((medicamento) => {
-                return(
-                <Card style={{width:"250px"}}>
-                   <Card.Img    style={{
-                width: "200px",
-                margin: "auto",
-              }}
-              src="https://th.bing.com/th/id/OIP.AuxQBiLqdNx2b5pe9eeseAAAAA?pid=ImgDet&rs=1" alt="Foto do medicamento conforme a liberação da ANVISA" width="120px" />
-              <Card.Title>{medicamento?.nomeMediamento}</Card.Title>
-              <Card.Text>{medicamento?.labotarorioMedicamento}</Card.Text>
-             
-              </Card>
-                )
-              })}
-               </div>
-            
+        <div className="card data-bs-toggle">
+           <Header />
+       
+           <div>
+            {listaMedicamentos.map((medicamento) => {
+               return(
+               <Card style={{width:"250px"}}>
+                  <Card.Img    style={{
+               width: "200px",
+               margin: "auto",
+             }}
+             src="https://th.bing.com/th/id/OIP.AuxQBiLqdNx2b5pe9eeseAAAAA?pid=ImgDet&rs=1" alt="Foto do medicamento conforme a liberação da ANVISA" width="120px" />
+             <Card.Title>{medicamento.nomeMedicamento}</Card.Title>
+             <Card.Text>{medicamento.labotarorioMedicamento}</Card.Text>
+             <Button className="btn btn-secondary" onClick={() => setMedicamentoSelecionado(medicamento)}>Detalhes</Button>
+             </Card>
+               )
+             })}
+              </div>
+              
              
                 <Modal show={medicamentoSelecionado} onHide={() => setMedicamentoSelecionado(null)}>
             <Modal.Header>Titulo</Modal.Header>
@@ -70,7 +70,8 @@ export function ListaDeMedicamentos () {
                 </ListGroup>
             </Modal.Body>
         </Modal>
-        </div>
+              </div>          
+       
     )
 }
 

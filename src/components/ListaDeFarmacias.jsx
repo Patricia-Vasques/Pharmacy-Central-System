@@ -17,7 +17,7 @@ export function ListaDeFarmacias() {
   
   
     return (
-        <div class="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
             <Row>
                 <Header />
                 <Table class="table table-bordered text-center" >
@@ -97,4 +97,4 @@ export function ListaDeFarmacias() {
             </Modal>
         </div>
     )
-  }
+}
