@@ -14,7 +14,6 @@
 }
 
 .form-group{
-    display: flex;
     color: black;
     margin-right: 15px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -24,6 +23,7 @@
 
 .input-usuario{
     background: white;
+    margin-left: 5px;
     color: black;
     font-size: 15px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -33,7 +33,7 @@
 .input-password{
     background: white;
     color: black;
-    margin-left:25px;
+    margin-left:5px;
     font-size: 15px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
