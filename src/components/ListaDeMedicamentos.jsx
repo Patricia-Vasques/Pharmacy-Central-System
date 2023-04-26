@@ -1,7 +1,6 @@
 import { Header } from "./Header";
 import { useState, useEffect } from "react";
 import { Modal, Card, ListGroup, ListGroupItem, Button } from "react-bootstrap"
-import "./listaMedicamentos.css";
 
 
 
@@ -19,11 +18,11 @@ export function ListaDeMedicamentos () {
     return(
         <div className="card data-bs-toggle">
            <Header />
-       
+             <h1 className=" d-flex justify-content-center mt-">Lista de medicamentos</h1>
            <div>
             {listaMedicamentos.map((medicamento) => {
                return(
-               <Card style={{width:"250px"}}>
+               <Card className="d-inline-block m-2 col-sm-6" style={{width:"250px"}}>
                   <Card.Img    style={{
                width: "200px",
                margin: "auto",
@@ -71,7 +70,6 @@ export function ListaDeMedicamentos () {
             </Modal.Body>
         </Modal>
               </div>          
-       
     )
 }
 

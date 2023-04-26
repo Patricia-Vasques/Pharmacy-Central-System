@@ -1,15 +1,18 @@
+
 .form-cadastroFarmacia{
-        display: block;
-        background-color: rgb(214, 210, 210);
-        border: solid 3px;
-        border-radius: 3px;
-        border-color: black;
-        text-align: center;
-        margin-top: 50px;
-        margin-left: 10%;
-        margin-right: 10%;
-        padding-top: 15px;
-        padding-bottom: 20px;
+    display: block;
+    font-size: 20px;
+    background-color: rgb(214, 210, 210);
+    border: solid 3px;
+    border-radius: 3px;
+    border-color: black;
+    text-align: center;
+    margin-top:40px;
+    margin-left: 22%;
+    margin-right: 10%;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .text-cadastroNovaFarmacia{
@@ -22,7 +25,7 @@
 }
 
 .label-razaoSocial{
-    display: block;
+    display: flex;
     color: black;
     margin-left: 110px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
