@@ -14,18 +14,31 @@ export const CadastroMedicamentos = (props) => {
     const [tipoMedicamento, setTipoMedicamento] = useState('');
     const navigate = useNavigate();
 
+    const medicamento= {
+        nomeMedicamento: nomeMedicamento,
+        laboratorioMedicamento: laboratorioMedicamento,
+        dosagemMedicamento: dosagemMedicamento,
+        descricaoMedicamento: descricaoMedicamento,
+        precoMedicamento: precoMedicamento,
+        tipoMedicamento: tipoMedicamento,
+        
+    }
+
     function handleCadastrarMedicamentos (event) {
         event.preventDefault();
 
         
         alert("Medicamento cadastrado com sucesso!");
 
-        const  listaMedicamentos =[{nomeMedicamento, laboratorioMedicamento, dosagemMedicamento, descricaoMedicamento, precoMedicamento, tipoMedicamento}];
-         JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
+        const  listaMedicamentos = JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
+
+        if(!Array.isArray(listaMedicamentos)){
+            listaMedicamentos=[];
+        }
 
         localStorage.setItem("listaMedicamentos", JSON.stringify(listaMedicamentos))
-    
-        props.quandoCadastrar(listaMedicamentos);
+        
+        listaFarmacias.push(medicamento)
 
         //resetar os valores 
         setNomeMedicamento("");
@@ -41,9 +54,12 @@ export const CadastroMedicamentos = (props) => {
     return (
         <div>
             < Header/>
+
+            <h2 className="text-cadastro-medicamentos">Cadastro de Medicamentos</h2>
+            
             <form className="form-cadastro-medicamentos" onSubmit={handleCadastrarMedicamentos}>
 
-                <h2 className="text-cadastro-medicamentos">Cadastro de Medicamentos</h2>
+                
                 
                 <div className="form-group">
                     <label className="label-cadastroMedicamento" htmlFor="nome-medicamento">Nome do Medicamento:</label>
