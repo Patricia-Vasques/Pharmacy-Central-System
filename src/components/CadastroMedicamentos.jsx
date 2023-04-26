@@ -35,10 +35,11 @@ export const CadastroMedicamentos = (props) => {
         if(!Array.isArray(listaMedicamentos)){
             listaMedicamentos=[];
         }
+        listaMedicamentos.push(medicamento)
 
         localStorage.setItem("listaMedicamentos", JSON.stringify(listaMedicamentos))
         
-        listaFarmacias.push(medicamento)
+        
 
         //resetar os valores 
         setNomeMedicamento("");
