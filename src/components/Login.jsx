@@ -21,7 +21,7 @@ export function Login () {
             //redirecionar para a página de Lista de Farmácias
             navigate("/ListaDeFarmacias");
           } else {
-            alert("Preencha os campos de usuário e senha corretamente!");
+            alert("Preencha os campos de usuário e senha corretamente! A senha deve conter no mínimo 8 dígitos entre letras e números.");
           }
         }
       }
@@ -29,7 +29,7 @@ export function Login () {
   
         <div>
             <HeaderInicial />
-
+        
         <form className="form-container">
        
         <div className="form-login">
@@ -48,8 +48,6 @@ export function Login () {
                     <input type="password" className="input-password" value={senha} name="senha" id="senha" placeholder="Digite sua senha" onChange={(e) => setSenha(e.target.value)} required/>
                 </div>
             </div>
-
-            <h5 className="text-senhaUsuario"> *Senha deve conter 8 caracteres com letras e números </h5>
 
                 <button className="button-entrar" type="submit" onClick={handleEntrar} > <b>Entrar</b></button>
                 <br />

@@ -19,7 +19,7 @@ export function NovoUsuario () {
 
             navigate("/");
         } else{
-            alert("Preencha todos os campos corretamente!")
+            alert("Preencha todos os campos corretamente! A senha deve conter no mínimo 8 dígitos entre letras e números.")
         }
         }
 
@@ -50,7 +50,7 @@ export function NovoUsuario () {
         </div>
         </div>
 
-        <h5 className="text-senhaUsuario"> *Senha deve conter 8 caracteres com letras e números </h5>
+        
         
         <button className="Button-cadastro-novoUsuario" type="submit" onClick={handleCadastrarUsuario}>Cadastrar</button>
         

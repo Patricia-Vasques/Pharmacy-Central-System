@@ -118,76 +118,93 @@ export function CadastrarFarmacia (){
 
         <form className="form-cadastroFarmacia" onSubmit={handleCadastrarFarmacia}>
         
-
+            <div className="row">
+            <div className="col-md-6">
             <div className="form-group">
-                <label className="label-razaoSocial" htmlFor="name"><b>Razão Social:</b></label>
-                <input type="text"  className="input-razaoSocial" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={(e) => setRazaoSocial(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="name"><b>Razão Social:</b></label>
+                <input type="text"  className="input-cadastroFarmacia" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social" onChange={(e) => setRazaoSocial(e.target.value)} required/>
             </div>
 
             <div className="form-group">
-                <label className="label-cnpj" htmlFor="cnpj"><b>CNPJ:</b></label>
-                <input type="text"  className="input-cnpj" name="cnpj" id="cnpj" placeholder="Digite o CNPJ" onChange={(e) => setCnpj(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="cnpj"><b>CNPJ:</b></label>
+                <input type="text"  className="input-cadastroFarmacia" name="cnpj" id="cnpj" placeholder="Digite o CNPJ" onChange={(e) => setCnpj(e.target.value)} required/>
+            </div>
+            </div>
+
+            <div className="col-md-6">
+            <div className="form-group">
+                <label className="label-cadastroFarmacia" htmlFor="nomeFantasia"><b>Nome fantasia:</b></label>
+                <input type="text"  className="input-cadastroFarmacia" name="nomeFantasia" id="nomeFantasia" placeholder="Digite o Nome Fantasia" onChange={(e) => setNomeFantasia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
-                <label className="label-nomeFantasia" htmlFor="nomeFantasia"><b>Nome fantasia:</b></label>
-                <input type="text"  className="input-nomeFantasia" name="nomeFantasia" id="nomeFantasia" placeholder="Digite o Nome Fantasia" onChange={(e) => setNomeFantasia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="emailFarmacia"><b>E-mail:</b></label>
+                <input type="email" className="input-cadastroFarmacia" name="emailFarmacia" id="emailFarmacia" placeholder="Digite o e-mail" onChange={(e) => setEmailFarmacia(e.target.value)} required/>
+            </div>
             </div>
 
+            <div className="col-md-6">
             <div className="form-group">
-                <label className="label-emailFarmacia" htmlFor="emailFarmacia"><b>E-mail:</b></label>
-                <input type="email" className="input-emailFarmacia" name="emailFarmacia" id="emailFarmacia" placeholder="Digite o e-mail" onChange={(e) => setEmailFarmacia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="telefoneFarmacia"><b>Telefone:</b></label>
+                <input type="tel"  className="input-cadastroFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={(e) => setTelefoneFarmacia(e.target.value)} required/>
+            </div>
             </div>
 
+            <div className="col-md-6">
             <div className="form-group">
-                <label className="label-telefoneFarmacia" htmlFor="telefoneFarmacia"><b>Telefone:</b></label>
-                <input type="tel"  className="input-telefoneFarmacia" name="telefoneFarmacia" id="telefoneFarmacia" placeholder="Digite o telefone" onChange={(e) => setTelefoneFarmacia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
+                <input type="tel" className="input-cadastroFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
             </div>
-
-            <div className="form-group">
-                <label className="label-celularFarmacia" htmlFor="celularFarmcia"><b>Celular:</b></label>
-                <input type="tel" className="input-celularFarmacia" name="celularFarmacia" id="celularFarmacia" placeholder="Digite o celular" onChange={(e) => setCelularFarmacia(e.target.value)} required/>
             </div>
            
             <hr />
             {/*Parte do endereço no formulário*/}
-            
+            <div className="col-md-6">
             <div className="form-group">
-                <label className="label-cep" htmlFor="cep" ><b>CEP:</b></label>
-                <input type="text" value={cepFarmacia} className="input-cep" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep"onBlur={buscarCep} onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="cep" ><b>CEP:</b></label>
+                <input type="text" value={cepFarmacia} className="input-cadastroFarmacia" name="cepFarmacia" id="cepFarmacia" placeholder="Digite o cep"onBlur={buscarCep} onChange={(e) =>  setCepFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
-                <label className="label-endereçoFarmacia" htmlFor="endereçoFarmacia"><b>Endereço:</b></label>
-                <input type="text" value={enderecoFarmacia } className="input-endereçoFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={(e) => setEnderecoFarmacia(e.target.value )} required/>
+                <label className="label-cadastroFarmacia" htmlFor="endereçoFarmacia"><b>Endereço:</b></label>
+                <input type="text" value={enderecoFarmacia } className="input-cadastroFarmacia" name="endereçoFarmacia" id="enderecoFarmacia" placeholder="Digite o endereço" onChange={(e) => setEnderecoFarmacia(e.target.value )} required/>
+            </div>
+            </div>
+
+            <div className="col-md-6">
+            <div className="form-group">
+                <label className="label-cadastroFarmacia" htmlFor="numeroEndereco"><b>Número:</b></label>
+                <input type="text"  className="input-cadastroFarmacia" name="numeroEndereco" id="numeroEndereco" placeholder="Digite o número" onChange={(e) => setNumeroFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
-                <label className="label-numeroEndereco" htmlFor="numeroEndereco"><b>Número:</b></label>
-                <input type="text"  className="input-numeroEndereco" name="numeroEndereco" id="numeroEndereco" placeholder="Digite o número" onChange={(e) => setNumeroFarmacia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="bairroFarmacia"><b>Bairro:</b></label>
+                <input type="text" value={bairroFarmacia } className="input-cadastroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={(e) => setBairroFarmacia(e.target.value)} required/>
+            </div>
+            </div>
+
+            <div className="col-md-6">
+            <div className="form-group">
+                <label className="label-cadastroFarmacia" htmlFor="cidadeFarmacia"><b>Cidade:</b></label>
+                <input type="text" value={cidadeFarmacia } className="input-cadastroFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={(e) => setCidadeFarmacia(e.target.value)} required/>
             </div>
 
             <div className="form-group">
-                <label className="label-bairroFarmacia" htmlFor="bairroFarmacia"><b>Bairro:</b></label>
-                <input type="text" value={bairroFarmacia } className="input-bairroFarmacia" name="bairroFarmacia" id="bairroFarmacia" placeholder="Digite o bairro" onChange={(e) => setBairroFarmacia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="estadoFarmacia"><b>Estado:</b></label>
+                <input type="text" value={estadoFarmacia } className="input-cadastroFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={(e) => setEstadoFarmacia(e.target.value)} required/>
+            </div>
             </div>
 
+            <div className="col-md-6">
             <div className="form-group">
-                <label className="label-cidadeFarmacia" htmlFor="cidadeFarmacia"><b>Cidade:</b></label>
-                <input type="text" value={cidadeFarmacia } className="input-cidadeFarmacia" name="cidadeFarmacia" id="cidadeFarmacia" placeholder="Digite a cidade" onChange={(e) => setCidadeFarmacia(e.target.value)} required/>
+                <label className="label-cadastroFarmacia" htmlFor="complementoFarmacia"><b>Complemento:</b></label>
+                <input type="text"  className="input-cadastroFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
+            </div>
             </div>
 
-            <div className="form-group">
-                <label className="label-estadoFarmacia" htmlFor="estadoFarmacia"><b>Estado:</b></label>
-                <input type="text" value={estadoFarmacia } className="input-estadoFarmacia" name="estadoFarmacia" id="estadoFarmacia" placeholder="Digite o estado" onChange={(e) => setEstadoFarmacia(e.target.value)} required/>
-            </div>
-
-            <div className="form-group">
-                <label className="label-complementoFarmacia" htmlFor="complementoFarmacia"><b>Complemento:</b></label>
-                <input type="text"  className="input-complementoFarmacia" name="complementoFarmacia" id="complementoFarmacia" placeholder="Digite um complemento" onChange={(e) => setComplemento(e.target.value)} />
-            </div>
-            <div >
+            <div>
             <button className="button-cadastroFarmacia" type="submit" onClick={handleCadastrarFarmacia}><b> Cadastrar Farmácia</b></button>
+            </div>
             </div>
             </form>
         </div>
