@@ -38,8 +38,8 @@ function App() {
     setFarmacias([...farmacias, farmacia])
   }
 
-  const cadastrarMedicamento = (listaMedicamentos) =>{
-    setMedicamentos([...listaMedicamentos, listaMedicamentos])
+  const cadastrarMedicamento = (listaMedicamento) =>{
+    setListaMedicamentos([...listaMedicamentos, listaMedicamento])
   }
 
   
