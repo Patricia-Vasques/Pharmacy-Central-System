@@ -27,7 +27,7 @@ export function ListaDeMedicamentos () {
                width: "200px",
                margin: "auto",
              }}
-             src="https://th.bing.com/th/id/OIP.AuxQBiLqdNx2b5pe9eeseAAAAA?pid=ImgDet&rs=1" alt="Foto do medicamento conforme a liberação da ANVISA" width="120px" />
+             src="https://s.cornershopapp.com/product-images/1212877.jpg?versionId=BOqqcfx5BGK1vgJsw7KUOVHdB.xWz7ed" alt="Foto do medicamento conforme a liberação da ANVISA" width="120px" />
              <Card.Title>{medicamento.nomeMedicamento}</Card.Title>
              <Card.Text>{medicamento.labotarorioMedicamento}</Card.Text>
              <Button className="btn btn-secondary" onClick={() => setMedicamentoSelecionado(medicamento)}>Detalhes</Button>

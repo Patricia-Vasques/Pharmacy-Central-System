@@ -29,12 +29,12 @@ export function NovoUsuario () {
         < div>
         <HeaderInicial />
 
-        <form className="form-novoUsuario" >
-
         <div className="text-novo-usuario">
             <h1>Cadastro Novo Usuário</h1>
         </div>
 
+        <form className="form-novoUsuario" >
+    
         <div className="form-group">
         <label className="label-novoUsuario-email" htmlFor="email"><b>E-mail:</b></label>
         <div className="form-novoUsuario-email">

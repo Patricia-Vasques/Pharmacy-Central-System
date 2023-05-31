@@ -30,11 +30,12 @@ export function Login () {
         <div>
             <HeaderInicial />
         
-        <form className="form-container">
-       
-        <div className="form-login">
+            <div className="form-login">
             <h1>Login</h1>
         </div> 
+        
+        <form className="form-container">
+    
             <div className="form-group">
                 <label className="label-usuario" htmlFor="email"><b>E-mail:</b></label>
                 <div className="form-usuario">

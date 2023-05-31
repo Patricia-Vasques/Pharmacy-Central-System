@@ -31,7 +31,7 @@ export function ListaDeFarmacias() {
                         {listaFarmacias.map((farmacia) => {
                             return (
                                 <tr key={farmacia?.cnpj}>
-                                    <th scope="row">1</th>
+                                    <th scope="row">*</th>
                                     <td>{farmacia?.nomeFantasia}</td>
                                     <td>{farmacia?.telefoneFarmacia}</td>
                                     <Button className="btn btn-outline-secondary" onClick={() => setFarmaciaSelecionada(farmacia)}> Informações</Button>

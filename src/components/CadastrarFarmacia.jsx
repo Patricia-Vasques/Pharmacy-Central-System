@@ -86,8 +86,7 @@ export function CadastrarFarmacia (){
  
         localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias))
 
-        
-
+    
             setRazaoSocial('');
             setCnpj('');
             setNomeFantasia('');
@@ -100,6 +99,7 @@ export function CadastrarFarmacia (){
             setBairroFarmacia('');
             setCidadeFarmacia('');
             setEstadoFarmacia('');
+            setComplemento('');
             
         
 
