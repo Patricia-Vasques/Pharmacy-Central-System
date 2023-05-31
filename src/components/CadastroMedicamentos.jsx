@@ -95,8 +95,10 @@ export const CadastroMedicamentos = (props) => {
                 <div className="form-group-medicamento">
                     <label className="label-cadastroMedicamento" htmlFor="tipo-medicamento">Tipo do medicamento:</label>
                     <select className="input-cadastroMedicamento"  name="tipo-medicamento" id="tipo-medicamento"   onChange={(e) => setTipoMedicamento(e.target.value)} required>
-                        <option value="medicamento-controlado">Controlado</option>
+                        <option ></option>
                         <option value="medicamento-comum">Comum</option>
+                        <option value="medicamento-controlado">Controlado</option>
+                        
                     </select>
                     <div>
                     <button className="button-cadastro-medicamento"> Cadastrar </button>
